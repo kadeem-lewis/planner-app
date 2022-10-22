@@ -1,0 +1,28 @@
+{
+  "name": "planner-app",
+  "version": "1.0.0",
+  "description": "A planner app to plan your days, weeks and months",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kadeem-lewis/planner-app.git"
+  },
+  "author": "Kadeem Lewis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kadeem-lewis/planner-app/issues"
+  },
+  "homepage": "https://github.com/kadeem-lewis/planner-app#readme",
+  "devDependencies": {
+    "webpack": "^5.74.0"
+  },
+  "dependencies": {
+    "@fullcalendar/core": "^5.11.3",
+    "@fullcalendar/daygrid": "^5.11.3",
+    "@fullcalendar/interaction": "^5.11.3",
+    "@fullcalendar/scrollgrid": "^5.11.3"
+  }
+}
