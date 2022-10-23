@@ -23,14 +23,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.css$/,
-                use: [
-                    { loader: MiniCssExtractPlugin.loader },
-                    { loader: 'css-loader', options: { importLoaders: 1 } }
-                ]
-            },
-            {
-                test: /\.s[ac]ss$/i,
+                test: /\.(sa|sc|c)ss$/,
                 use: [
                 // fallback to style-loader in development
                 process.env.NODE_ENV !== "production"
