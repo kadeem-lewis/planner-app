@@ -1,10 +1,10 @@
-name: Development Workflow
+name: NodeJs with Webpack CI
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "main", "dev" ]
   pull_request:
-    branches: '*'
+    branches: [ "main", "dev" ]
 
 jobs:
   build:
