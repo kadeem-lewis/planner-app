@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack-dev-server",
     "build:prod": "webpack",
+    "commit":"git-cz",
     "semantic-release": "semantic-release --branches main"
   },
   "repository": {
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/kadeem-lewis/planner-app#readme",
   "devDependencies": {
     "css-loader": "^6.7.1",
+    "cz-conventional-changelog": "^3.3.0",
     "file-loader": "^6.2.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
@@ -28,11 +30,11 @@
     "node-sass": "^7.0.3",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
+    "semantic-release": "^19.0.5",
     "style-loader": "^3.3.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.11.1",
-    "semantic-release": "^19.0.5"
+    "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
     "@fullcalendar/core": "^5.11.3",
@@ -40,5 +42,10 @@
     "@fullcalendar/interaction": "^5.11.3",
     "@fullcalendar/scrollgrid": "^5.11.3",
     "dotenv": "^16.0.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
