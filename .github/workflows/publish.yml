@@ -26,7 +26,7 @@ jobs:
       run: |
         npm install
         npx webpack
-        
+
   publish:
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
@@ -45,4 +45,4 @@ jobs:
         
       
 
-    
+  
