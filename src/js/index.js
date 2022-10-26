@@ -1,12 +1,18 @@
+import '@fullcalendar/core/vdom'
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import scrollGridPlugin from '@fullcalendar/scrollgrid';
+import listPlugin from '@fullcalendar/list';
 
 console.log("hello world");
-/*
+
 document.addEventListener("DOMContentLoaded",(event) => {
 
     let mainCalendar = document.getElementById("calendar");
 
-    let calendar = new FullCalendar.Calendar(mainCalendar, {
-        plugins: [ dayGridPlugin, interactionPlugin, scrollGridPlugin ],
+    let calendar = new Calendar(mainCalendar, {
+        plugins: [ dayGridPlugin, interactionPlugin, scrollGridPlugin, listPlugin ],
         initialView: 'dayGridWeek',
         headerToolbar: {
         left: 'prev,next today',
@@ -29,4 +35,3 @@ document.addEventListener("DOMContentLoaded",(event) => {
     calendar.render()
 
 });
-*/
