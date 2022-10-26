@@ -42,7 +42,8 @@
     "@fullcalendar/interaction": "^5.11.3",
     "@fullcalendar/list": "^5.11.3",
     "@fullcalendar/scrollgrid": "^5.11.3",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
   },
   "config": {
     "commitizen": {
