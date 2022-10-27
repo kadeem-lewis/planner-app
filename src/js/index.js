@@ -4,8 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import scrollGridPlugin from '@fullcalendar/scrollgrid';
 import listPlugin from '@fullcalendar/list';
-
-console.log("hello world");
+import '../css/styles.scss'
 
 document.addEventListener("DOMContentLoaded",(event) => {
 
