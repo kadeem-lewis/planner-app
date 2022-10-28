@@ -4,7 +4,7 @@
   "description": "A planner app to plan your days, weeks and months",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "nodemon src/js/server.js",
     "build": "vite build",
     "preview": "vite preview",
     "commit": "git-cz",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
     "netlify-cli": "^2.37.0",
+    "nodemon": "^2.0.20",
     "sass": "^1.55.0",
     "semantic-release": "^19.0.5"
   },
