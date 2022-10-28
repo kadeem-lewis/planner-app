@@ -6,6 +6,8 @@ import scrollGridPlugin from '@fullcalendar/scrollgrid';
 import listPlugin from '@fullcalendar/list';
 import '../css/styles.scss'
 
+console.log("hello world");
+
 document.addEventListener("DOMContentLoaded",(event) => {
 
     let mainCalendar = document.getElementById("calendar");
