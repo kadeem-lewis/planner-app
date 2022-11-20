@@ -60,6 +60,7 @@ const router = async () => {
   console.log(match.route.view());
 };
 
+
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", (e) => {
     if (e.target.matches("[data-link]")) {
@@ -68,4 +69,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   router();
+});
+
+
+const router = async () => {
+    const routes = [
+        {   path: '/',view: ()=> console.log("Viewing home")},
+        {   path: '/calendar',view: ()=> console.log("Viewing calendar")},
+        {   path: '/tasks',view: ()=> console.log("Viewing tasks")}
+    ];
+
+    const potentialMatches = routes.map(route => {
+        return {
+            route: routes,
+            isMatch: location.pathname === route.path
+
+        }
+    })
+    let match = potentialMatches.find(potentialMatch => potentialMatch.isMatch);
+
+    if (!match) { //Replace this with custom defined 404
+        match = {
+            route: routes[0],
+            isMatch: true
+        };
+    }
+        
+    console.log(match.route.view());
+}
+
+document.addEventListener("DOMContentLoaded",() => {
+    router();
 });
