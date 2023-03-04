@@ -3,6 +3,7 @@
   "version": "0.0.0-development",
   "description": "A planner app to plan your days, weeks and months",
   "main": "index.js",
+  "private":true,
   "scripts": {
     "dev": "nodemon src/js/server.js",
     "build": "vite build",
@@ -27,6 +28,9 @@
     "sass": "^1.55.0",
     "semantic-release": "^19.0.5"
   },
+  "workspaces": [
+    "client",
+    "server"  ],
   "dependencies": {
     "@fullcalendar/core": "^5.11.3",
     "@fullcalendar/daygrid": "^5.11.3",
