@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "description": "A planner app to plan your days, weeks and months",
   "main": "index.js",
-  "private":true,
+  "private": true,
   "scripts": {
     "dev": "nodemon src/js/server.js",
     "build": "vite build",
@@ -30,16 +30,10 @@
   },
   "workspaces": [
     "client",
-    "server"  ],
+    "server"
+  ],
   "dependencies": {
-    "@fullcalendar/core": "^5.11.3",
-    "@fullcalendar/daygrid": "^5.11.3",
-    "@fullcalendar/interaction": "^5.11.3",
-    "@fullcalendar/list": "^5.11.3",
-    "@fullcalendar/scrollgrid": "^5.11.3",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "vite": "^3.2.0"
+    "dotenv": "^16.0.3"
   },
   "config": {
     "commitizen": {
