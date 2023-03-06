@@ -21,23 +21,14 @@
     "url": "https://github.com/kadeem-lewis/planner-app/issues"
   },
   "homepage": "https://github.com/kadeem-lewis/planner-app#readme",
-  "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0",
-    "netlify-cli": "^2.37.0",
-    "nodemon": "^2.0.20",
-    "sass": "^1.55.0",
-    "semantic-release": "^19.0.5"
-  },
   "workspaces": [
     "client",
     "server"
   ],
+  "devDependencies": {
+    "netlify-cli": "^2.37.0"
+  },
   "dependencies": {
     "dotenv": "^16.0.3"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
