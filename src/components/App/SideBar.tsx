@@ -1,12 +1,29 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCalendar,
+  faCalendarDay,
+  faCalendarDays,
+  faRectangleList,
+  faTableColumns,
+} from "@fortawesome/free-solid-svg-icons";
 export const SideBar = () => {
   return (
-    <aside>
+    <aside className="menu col-span-2">
       <ul>
         <li>
-          <Link to="/app/today">Today</Link>
-          <Link to="/app/calendar">Calendar</Link>
-          <Link to="/app/taskboard">Taskboard</Link>
+          <Link to="/app/today">
+            <FontAwesomeIcon icon={faCalendarDay} />
+            Today
+          </Link>
+          <Link to="/app/calendar">
+            <FontAwesomeIcon icon={faCalendarDays} />
+            Calendar
+          </Link>
+          <Link to="/app/taskboard">
+            <FontAwesomeIcon icon={faTableColumns} />
+            Taskboard
+          </Link>
         </li>
       </ul>
     </aside>

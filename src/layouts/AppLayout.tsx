@@ -7,8 +7,12 @@ export const AppLayout = () => {
   return (
     <>
       <NavBar />
-      <SideBar />
-      <Outlet />
+      <div className="grid grid-cols-10">
+        <SideBar />
+        <div className="col-span-8">
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 };
