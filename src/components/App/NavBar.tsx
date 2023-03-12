@@ -2,11 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faBell, faHome } from "@fortawesome/free-solid-svg-icons";
+import { ActivityButton } from "./ActivityButton";
+import { NotificationTab } from "./NotificationTab";
 
 export const NavBar = () => {
   return (
     <nav className="navbar flex justify-between">
-      <div id="nav-left">
+      <div id="nav-left" className="gap-x-1">
         <button className="btn btn-square btn-ghost">
           <FontAwesomeIcon icon={faBars} />
         </button>
@@ -14,10 +16,14 @@ export const NavBar = () => {
           <FontAwesomeIcon icon={faHome} />
         </Link>
       </div>
-      <div id="nav-right">
-        <button className="btn btn-ghost">
-          <FontAwesomeIcon icon={faBell} />
-        </button>
+      <div id="nav-right" className="gap-x-1">
+        <ActivityButton />
+        <div className="dropdown dropdown-bottom dropdown-end">
+          <label tabIndex={0} className="btn btn-ghost">
+            <FontAwesomeIcon icon={faBell} />
+          </label>
+          <NotificationTab />
+        </div>
         <div className="dropdown dropdown-end">
           <label
             tabIndex={0}
