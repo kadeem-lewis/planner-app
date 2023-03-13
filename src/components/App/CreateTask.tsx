@@ -9,13 +9,14 @@ export const CreateTask = ({ setIsOpen }: Props) => {
         Title:
       </label>
       <input type="text" name="title" className="input" />
-      <label htmlFor="description">Description</label>
+      <label htmlFor="start-time" className="label">
+        Start
+      </label>
       <input type="datetime-local" name="start-time" />
-      <textarea
-        name="description"
-        placeholder="Description"
-        className="textarea"
-      ></textarea>
+      <label htmlFor="end-time" className="label">
+        End
+      </label>
+      <input type="datetime-local" name="end-time" />
       <input type="submit" value="Add" className="btn" />
     </form>
   );
