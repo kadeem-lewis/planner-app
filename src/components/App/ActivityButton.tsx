@@ -6,24 +6,32 @@ import { ActivityModal } from "./ActivityModal";
 export const ActivityButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activityType, setActivityType] = useState("");
+  const createActivity = (activity: string) => {
+    setActivityType(activity);
+    setIsOpen(true);
+  };
   return (
     <>
       <div className="dropdown dropdown-bottom dropdown-end">
-        <label tabIndex={0} className="btn btn-ghost m-1">
+        <button className="btn btn-ghost m-1">
           <FontAwesomeIcon icon={faPlus} />
-        </label>
-        <ul
-          tabIndex={0}
-          className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-        >
+        </button>
+        <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
           <li>
-            <button>Add Event</button>
+            <button onClick={() => createActivity("event")}>Add Event</button>
           </li>
           <li>
-            <button>Add Task</button>
+            <button onClick={() => createActivity("task")}>Add Task</button>
           </li>
         </ul>
       </div>
+      {isOpen && (
+        <ActivityModal
+          setIsOpen={setIsOpen}
+          activityType={activityType}
+          setActivityType={setActivityType}
+        />
+      )}
     </>
   );
 };
