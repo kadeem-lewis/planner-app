@@ -17,14 +17,6 @@ export const CreateTask = ({ setIsOpen }: Props) => {
         End
       </label>
       <input type="datetime-local" name="end-time" />
-      <label htmlFor="description" className="label">
-        Description
-      </label>
-      <textarea
-        name="description"
-        placeholder="Description"
-        className="textarea"
-      ></textarea>
       <input type="submit" value="Add" className="btn" />
     </form>
   );
