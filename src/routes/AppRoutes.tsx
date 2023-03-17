@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Calendar } from "../pages/Calendar";
-import { Today } from "../pages/Today";
-import { TaskBoard } from "../pages/TaskBoard";
+import { Calendar } from "../pages/App/Calendar";
+import { Today } from "../pages/App/Today";
+import { TaskBoard } from "../pages/App/TaskBoard";
 import { AppLayout } from "../layouts/AppLayout";
 
 export const AppRoutes = () => {
