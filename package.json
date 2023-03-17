@@ -20,6 +20,7 @@
   "homepage": "https://github.com/kadeem-lewis/planner-app#readme",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-brands-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@fullcalendar/core": "^6.1.4",
@@ -29,7 +30,9 @@
     "@fullcalendar/react": "^6.1.4",
     "@fullcalendar/scrollgrid": "^6.1.4",
     "@fullcalendar/timegrid": "^6.1.4",
+    "@headlessui/react": "^1.7.13",
     "daisyui": "^2.51.3",
+    "firebase": "^9.18.0",
     "netlify-cli": "^13.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
