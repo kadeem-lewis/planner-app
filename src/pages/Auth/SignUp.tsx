@@ -1,15 +1,7 @@
-import React, { useRef, Dispatch, useState, FormEvent } from "react";
+import React, { useRef, useState, FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
-import { auth, googleProvider } from "../../config/firebase";
 import { useAuth } from "../../contexts/AuthContext";
+import { SignInOptions } from "../../components/Auth/SignInOptions";
 
 export const SignUp = () => {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -17,28 +9,9 @@ export const SignUp = () => {
   const confirmPasswordRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { signup, googleSignUp, anonymousSignUp } = useAuth();
+  const { signup } = useAuth();
   const navigate = useNavigate();
-  const handleGoogleSignUp = async () => {
-    if (googleSignUp) {
-      try {
-        await googleSignUp();
-        navigate("../../app/today");
-      } catch (err) {
-        console.error("Google Sign up failed");
-      }
-    }
-  };
-  const handleAnonymousSignUp = async () => {
-    if (anonymousSignUp) {
-      try {
-        await anonymousSignUp();
-        navigate("../../app/today");
-      } catch (err) {
-        console.error("Google Sign up failed");
-      }
-    }
-  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
@@ -67,19 +40,7 @@ export const SignUp = () => {
         <h2 className=" text-2xl font-bold">Sign Up</h2>
         {error && <div className="alert alert-error">{error}</div>}
 
-        <div className=" space-y-4">
-          <button onClick={() => handleGoogleSignUp()} className="btn w-full">
-            <FontAwesomeIcon icon={faGoogle} className="mr-4" />
-            Sign in with Google
-          </button>
-          <button
-            className="btn w-full"
-            onClick={() => handleAnonymousSignUp()}
-          >
-            <FontAwesomeIcon icon={faUserSecret} className="mr-4" />
-            Sign in Anonymously
-          </button>
-        </div>
+        <SignInOptions setError={setError} />
         <div className="divider">OR</div>
         <form className="form-control" onSubmit={(e) => handleSubmit(e)}>
           <label htmlFor="email">Email:</label>
