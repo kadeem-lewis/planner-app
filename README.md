@@ -1,7 +1,9 @@
 # Planner App
 
 This is my overambitious planner app that I hope to build over the course of the next few months. the goal is to create something I can use it in everyday life and will also teach me how
-to better use different technologies. Currently it is using git, webpack, npm and nodeJs.
+to better use different technologies. ~~Currently it is using git, webpack, npm and nodeJs.~~
+
+Currently it is using git, vite, React, Typescript, TailwindCSS and Firebase.
 
 ## To Do List
 
