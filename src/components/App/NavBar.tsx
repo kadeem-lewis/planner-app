@@ -1,13 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faBell, faHome } from "@fortawesome/free-solid-svg-icons";
 import { ActivityButton } from "./ActivityButton";
 import { NotificationTab } from "./NotificationTab";
+import { useAuth } from "../../contexts/AuthContext";
 
 export const NavBar = () => {
+  const { currentUser, logout } = useAuth();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogOut = async () => {
+    setError("");
+    if (logout) {
+      try {
+        await logout();
+        navigate("../../auth/login");
+      } catch (err) {
+        setError("failed to log out");
+      }
+    }
+  };
+
   return (
-    <nav className="navbar flex justify-between">
+    <nav className="navbar flex justify-between bg-base-300">
       <div id="nav-left" className="gap-x-1">
         <button className="btn btn-square btn-ghost">
           <FontAwesomeIcon icon={faBars} />
@@ -30,7 +47,7 @@ export const NavBar = () => {
             className="btn btn-ghost btn-circle avatar placeholder"
           >
             <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
-              <span className="text-xl">KL</span>
+              <span className="text-xl">{currentUser?.email?.[0] ?? "NA"}</span>
             </div>
           </label>
           <ul
@@ -44,7 +61,7 @@ export const NavBar = () => {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a onClick={() => handleLogOut()}>Logout</a>
             </li>
           </ul>
         </div>
