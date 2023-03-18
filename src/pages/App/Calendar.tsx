@@ -3,7 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import { ActivityModal } from "../components/App/ActivityModal";
+import { ActivityModal } from "../../components/App/ActivityModal";
 
 export const Calendar = () => {
   const [isOpen, setIsOpen] = useState(false);
