@@ -11,7 +11,6 @@ import {
   signInWithEmailAndPassword,
   UserCredential,
   signOut,
-  GoogleAuthProvider,
   signInAnonymously,
   signInWithPopup,
 } from "firebase/auth";
