@@ -1,6 +1,5 @@
-import React, { useRef, Dispatch } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faX } from "@fortawesome/free-solid-svg-icons";
+import React, { Dispatch } from "react";
+import { FaWindowClose } from "react-icons/fa";
 interface Props {
   children: React.ReactNode;
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
@@ -14,7 +13,7 @@ export const Dialog = ({ children, setIsOpen }: Props) => {
           className="btn btn-sm btn-circle absolute right-2 top-2"
           onClick={() => setIsOpen(false)}
         >
-          <FontAwesomeIcon icon={faX} />
+          <FaWindowClose />
         </label>
         {children}
       </div>

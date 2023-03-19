@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FaPlus } from "react-icons/fa";
 import { ActivityModal } from "./ActivityModal";
 
 export const ActivityButton = () => {
@@ -14,7 +13,7 @@ export const ActivityButton = () => {
     <>
       <div className="dropdown dropdown-bottom dropdown-end">
         <button className="btn btn-ghost m-1">
-          <FontAwesomeIcon icon={faPlus} />
+          <FaPlus />
         </button>
         <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
           <li>

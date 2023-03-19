@@ -1,8 +1,7 @@
 import React, { Dispatch, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
+import { FcGoogle } from "react-icons/fc";
+import { FaUserSecret } from "react-icons/fa";
 import { useAuth } from "../../contexts/AuthContext";
 interface Props {
   setError: Dispatch<React.SetStateAction<string>>;
@@ -45,7 +44,7 @@ export const SignInOptions = ({ setError }: Props) => {
         className="btn w-full"
         disabled={loading}
       >
-        <FontAwesomeIcon icon={faGoogle} className="mr-4" />
+        <FcGoogle className="mr-4" />
         Sign in with Google
       </button>
       <button
@@ -53,7 +52,7 @@ export const SignInOptions = ({ setError }: Props) => {
         onClick={() => handleAnonymousSignUp()}
         disabled={loading}
       >
-        <FontAwesomeIcon icon={faUserSecret} className="mr-4" />
+        <FaUserSecret className="mr-4" />
         Sign in Anonymously
       </button>
     </div>
