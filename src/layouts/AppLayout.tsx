@@ -7,12 +7,12 @@ export const AppLayout = () => {
   return (
     <>
       <NavBar />
-      <div className="grid grid-cols-10">
+      <main className="grid grid-cols-10">
         <SideBar />
         <div className="col-span-8">
           <Outlet />
         </div>
-      </div>
+      </main>
     </>
   );
 };

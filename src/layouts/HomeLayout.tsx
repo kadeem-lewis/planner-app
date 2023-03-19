@@ -7,7 +7,9 @@ export const HomeLayout = () => {
   return (
     <>
       <NavBar />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 };
