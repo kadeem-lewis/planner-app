@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faBell, faHome } from "@fortawesome/free-solid-svg-icons";
+import { FaBars, FaBell } from "react-icons/fa";
+import { AiFillHome } from "react-icons/ai";
 import { ActivityButton } from "./ActivityButton";
 import { NotificationTab } from "./NotificationTab";
 import { useAuth } from "../../contexts/AuthContext";
@@ -28,17 +28,17 @@ export const NavBar = () => {
       <nav className="navbar flex justify-between bg-base-300">
         <div id="nav-left" className="gap-x-1">
           <button className="btn btn-square btn-ghost">
-            <FontAwesomeIcon icon={faBars} />
+            <FaBars />
           </button>
           <Link to="today" className="btn btn-ghost">
-            <FontAwesomeIcon icon={faHome} />
+            <AiFillHome />
           </Link>
         </div>
         <div id="nav-right" className="gap-x-1">
           <ActivityButton />
           <div className="dropdown dropdown-bottom dropdown-end">
             <label tabIndex={0} className="btn btn-ghost">
-              <FontAwesomeIcon icon={faBell} />
+              <FaBell />
             </label>
             <NotificationTab />
           </div>
