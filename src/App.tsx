@@ -1,8 +1,6 @@
 import { Route, Routes } from "react-router";
 
 import { NotFound } from "./pages/NotFound";
-import { SignUp } from "./pages/Auth/SignUp";
-import { LogIn } from "./pages/Auth/LogIn";
 import { LandingPage } from "./pages/Home/LandingPage";
 import { AppRoutes } from "./routes/AppRoutes";
 import { HomeLayout } from "./layouts/HomeLayout";
@@ -15,7 +13,7 @@ export const App = () => {
     <AuthProvider>
       <Routes>
         <Route element={<HomeLayout />}>
-          <Route path="/home" element={<LandingPage />} />
+          <Route index element={<LandingPage />} />
         </Route>
         <Route path="/auth/*" element={<AuthRoutes />} />
         <Route
