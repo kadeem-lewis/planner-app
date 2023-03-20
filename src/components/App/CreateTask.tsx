@@ -37,16 +37,26 @@ export const CreateTask = ({ setIsOpen }: Props) => {
       <label htmlFor="title" className="label">
         Title:
       </label>
-      <input type="text" name="title" className="input" ref={titleRef} />
+      <input
+        type="text"
+        name="title"
+        className="input input-bordered"
+        ref={titleRef}
+      />
       <label htmlFor="description">Description:</label>
       <textarea
         name="description"
         placeholder="Description"
-        className="textarea"
+        className="textarea textarea-bordered"
         ref={descRef}
       ></textarea>
       <label htmlFor="due-date">Due Date:</label>
-      <input type="date" name="due-date" ref={dateRef} className="input" />
+      <input
+        type="date"
+        name="due-date"
+        ref={dateRef}
+        className="input input-bordered"
+      />
       <select
         name="progress"
         ref={selectRef}

@@ -35,7 +35,12 @@ export const CreateEvent = ({ setIsOpen }: Props) => {
       <label htmlFor="title" className="label">
         Title:
       </label>
-      <input type="text" name="title" className="input" ref={titleRef} />
+      <input
+        type="text"
+        name="title"
+        className="input input-bordered"
+        ref={titleRef}
+      />
       <label htmlFor="start-time" className="label">
         Start
       </label>
