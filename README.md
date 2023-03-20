@@ -24,6 +24,7 @@ Currently it is using git, vite, React, Typescript, TailwindCSS and Firebase.
 
 - [ ] Create filters, groups and labels
 - [ ] Setup Service Worker
+- [ ] Create and get reminders for tasks and events
 - [ ] Create update profile and settings features
 
 ### Tasks from First Version
@@ -36,7 +37,7 @@ Currently it is using git, vite, React, Typescript, TailwindCSS and Firebase.
 - [x] "+" button inside of dates to create an event for that date
 - [ ] Monthly view shows title of page and to do list snippet
 - [ ] Weekly view shows title, to do and other important element from the page
-- [ ] backend to store user data
+- [x] backend to store user data
 - [x] user login
 - [ ] tags to group items
 - [ ] include trello like functionality
