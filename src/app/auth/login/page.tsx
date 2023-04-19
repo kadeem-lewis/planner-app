@@ -1,45 +1,35 @@
 import React, { useRef, useState, FormEvent } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
-import { SignInOptions } from "../../components/Auth/SignInOptions";
+import { useAuth } from "@/contexts/AuthContext";
+import { SignInOptions } from "@/components/Auth/SignInOptions";
 
-export const SignUp = () => {
+export const LogIn = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const confirmPasswordRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { signup } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (
-      emailRef.current &&
-      passwordRef.current &&
-      confirmPasswordRef.current &&
-      signup
-    ) {
-      if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-        return setError("Passwords do not match");
-      }
+    if (emailRef.current && passwordRef.current && login) {
       try {
         setError("");
         setLoading(true);
-        await signup(emailRef.current.value, passwordRef.current.value);
+        await login(emailRef.current.value, passwordRef.current.value);
         navigate("../../app/today");
       } catch (error) {
-        setError("Failed to create an account");
+        setError("Failed to login");
       }
       setLoading(false);
     }
   };
+
   return (
     <div className="flex justify-center items-center">
       <div className="max-w-lg">
-        <h2 className=" text-2xl font-bold">Sign Up</h2>
+        <h2 className="text-2xl font-bold">Log in</h2>
         {error && <div className="alert alert-error">{error}</div>}
-
         <SignInOptions setError={setError} />
         <div className="divider">OR</div>
         <form className="form-control" onSubmit={(e) => handleSubmit(e)}>
@@ -59,26 +49,20 @@ export const SignUp = () => {
             ref={passwordRef}
             className="input input-bordered"
           />
-          <label htmlFor="confirm-password">Confirm Password:</label>
-          <input
-            type="password"
-            name="confirm-password"
-            id="confirm-password"
-            ref={confirmPasswordRef}
-            className=" input input-bordered"
-          />
-          <input
-            type="submit"
-            value="Register"
-            className="btn"
-            disabled={loading}
-          />
+          <Link href="../password" className="link">
+            Forgot Password?
+          </Link>
+          <input type="submit" value="Register" className="btn" />
         </form>
+        <p>
+          By continuing with Google, Apple, or Email, you agree to planner-app
+          Terms of Service and Privacy Policy.
+        </p>
         <div className="divider" />
         <p>
-          Already have an account?{" "}
-          <Link to="../login" className="link">
-            Log in
+          Don&apos;t have an account yet?{" "}
+          <Link to="../signup" className="link">
+            Sign up
           </Link>
         </p>
       </div>

@@ -3,8 +3,8 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import { ActivityModal } from "../../components/App/ActivityModal";
-import { useFireStore } from "../../contexts/FirestoreContext";
+import { ActivityModal } from "@/components/App/ActivityModal";
+import { useFireStore } from "@/contexts/FirestoreContext";
 import { EventInput } from "@fullcalendar/core";
 
 export const Calendar = () => {
