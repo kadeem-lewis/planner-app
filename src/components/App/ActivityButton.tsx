@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import { ActivityModal } from "./ActivityModal";
+import ActivityModal from "./ActivityModal";
 
-export const ActivityButton = () => {
+export default function ActivityButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [activityType, setActivityType] = useState("");
   const createActivity = (activity: string) => {
@@ -33,4 +33,4 @@ export const ActivityButton = () => {
       )}
     </>
   );
-};
+}

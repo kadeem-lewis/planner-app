@@ -4,7 +4,7 @@ interface Props {
   children: React.ReactNode;
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
 }
-export const Dialog = ({ children, setIsOpen }: Props) => {
+export default function Dialog({ children, setIsOpen }: Props) {
   return (
     <div className="modal modal-open">
       <div className="modal-box relative">
@@ -19,4 +19,4 @@ export const Dialog = ({ children, setIsOpen }: Props) => {
       </div>
     </div>
   );
-};
+}

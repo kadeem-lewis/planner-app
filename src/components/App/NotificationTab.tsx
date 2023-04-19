@@ -1,6 +1,6 @@
 import React from "react";
 
-export const NotificationTab = () => {
+export default function NotificationTab() {
   return (
     <ul
       tabIndex={0}
@@ -12,4 +12,4 @@ export const NotificationTab = () => {
       </li>
     </ul>
   );
-};
+}

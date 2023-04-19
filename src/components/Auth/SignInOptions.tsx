@@ -1,12 +1,12 @@
 import React, { Dispatch, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import Link from "next/link";
 import { FaUserSecret } from "react-icons/fa";
 import { useAuth } from "../../contexts/AuthContext";
 interface Props {
   setError: Dispatch<React.SetStateAction<string>>;
 }
-export const SignInOptions = ({ setError }: Props) => {
+export default function SignInOptions({ setError }: Props) {
   const [loading, setLoading] = useState(false);
   const { googleSignUp, anonymousSignUp } = useAuth();
   const navigate = useNavigate();
@@ -57,4 +57,4 @@ export const SignInOptions = ({ setError }: Props) => {
       </button>
     </div>
   );
-};
+}

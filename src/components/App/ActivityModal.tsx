@@ -1,17 +1,17 @@
 import React, { useState, Dispatch } from "react";
-import { Dialog } from "../Dialog";
-import { CreateEvent } from "./CreateEvent";
-import { CreateTask } from "./CreateTask";
+import Dialog from "../Dialog";
+import CreateEvent from "./CreateEvent";
+import CreateTask from "./CreateTask";
 interface Props {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
   setActivityType: Dispatch<React.SetStateAction<string>>;
   activityType: string;
 }
-export const ActivityModal = ({
+export default function ActivityModal({
   setIsOpen,
   setActivityType,
   activityType,
-}: Props) => {
+}: Props) {
   return (
     <Dialog setIsOpen={setIsOpen}>
       <div className="tabs tabs-boxed">
@@ -35,4 +35,4 @@ export const ActivityModal = ({
       )}
     </Dialog>
   );
-};
+}

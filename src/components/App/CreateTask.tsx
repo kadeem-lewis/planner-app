@@ -4,7 +4,7 @@ import { Timestamp } from "firebase/firestore";
 interface Props {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
 }
-export const CreateTask = ({ setIsOpen }: Props) => {
+export default function CreateTask({ setIsOpen }: Props) {
   const { addTask } = useFireStore();
   const titleRef = useRef<HTMLInputElement>(null);
   const descRef = useRef<HTMLTextAreaElement>(null);
@@ -60,4 +60,4 @@ export const CreateTask = ({ setIsOpen }: Props) => {
       <input type="submit" value="Add" className="btn" />
     </form>
   );
-};
+}

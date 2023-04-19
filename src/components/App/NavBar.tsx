@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaBell } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
-import { ActivityButton } from "./ActivityButton";
-import { NotificationTab } from "./NotificationTab";
+import ActivityButton from "./ActivityButton";
+import NotificationTab from "./NotificationTab";
+import Link from "next/link";
 import { useAuth } from "../../contexts/AuthContext";
 
-export const NavBar = () => {
+export default function NavBar() {
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ export const NavBar = () => {
           <button className="btn btn-square btn-ghost">
             <FaBars />
           </button>
-          <Link to="today" className="btn btn-ghost">
+          <Link href="today" className="btn btn-ghost">
             <AiFillHome />
           </Link>
         </div>
@@ -72,4 +72,4 @@ export const NavBar = () => {
       </nav>
     </header>
   );
-};
+}

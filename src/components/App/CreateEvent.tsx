@@ -4,7 +4,7 @@ import { useFireStore } from "../../contexts/FirestoreContext";
 interface Props {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
 }
-export const CreateEvent = ({ setIsOpen }: Props) => {
+export default function CreateEvent({ setIsOpen }: Props) {
   const { addEvent } = useFireStore();
   const titleRef = useRef<HTMLInputElement>(null);
   const startDateRef = useRef<HTMLInputElement>(null);
@@ -47,4 +47,4 @@ export const CreateEvent = ({ setIsOpen }: Props) => {
       <input type="submit" value="Add" className="btn" />
     </form>
   );
-};
+}
