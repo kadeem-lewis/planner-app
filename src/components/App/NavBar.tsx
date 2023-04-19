@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { FaBars, FaBell } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";

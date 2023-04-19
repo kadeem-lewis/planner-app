@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef, useState, FormEvent } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import SignInOptions from "@/components/Auth/SignInOptions";

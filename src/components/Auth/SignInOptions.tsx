@@ -1,3 +1,4 @@
+"use client";
 import React, { Dispatch, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
