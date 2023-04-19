@@ -1,8 +1,9 @@
 import React, { useRef, useState, FormEvent } from "react";
 import { useAuth } from "@/contexts/AuthContext";
-import { SignInOptions } from "@/components/Auth/SignInOptions";
+import SignInOptions from "@/components/Auth/SignInOptions";
+import Link from "next/link";
 
-export const LogIn = () => {
+export default function LogIn() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState("");
@@ -61,11 +62,11 @@ export const LogIn = () => {
         <div className="divider" />
         <p>
           Don&apos;t have an account yet?{" "}
-          <Link to="../signup" className="link">
+          <Link href="../signup" className="link">
             Sign up
           </Link>
         </p>
       </div>
     </div>
   );
-};
+}

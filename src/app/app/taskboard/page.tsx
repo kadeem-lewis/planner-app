@@ -1,5 +1,5 @@
 import React from "react";
 
-export const TaskBoard = () => {
+export default function TaskBoard() {
   return <div>TaskBoard</div>;
-};
+}

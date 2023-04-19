@@ -1,5 +1,5 @@
 import React from "react";
 
-export const Today = () => {
+export default function Today() {
   return <div>Today</div>;
-};
+}
