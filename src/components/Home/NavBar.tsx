@@ -5,7 +5,7 @@ export const NavBar = () => {
   return (
     <header>
       <nav className="flex justify-between bg-base-200 navbar">
-        <Link to="/home">Logo</Link>
+        <Link to="/home">Taskbored</Link>
         <div>
           <button className="btn mr-4">
             <Link to="auth/signup">Signup</Link>
