@@ -7,15 +7,15 @@ export default function SideBar() {
     <aside className="menu col-span-2 bg-base-200">
       <ul>
         <li>
-          <Link href="/app/today">
+          <Link href="/main/today">
             <FaCalendarDay />
             Today
           </Link>
-          <Link href="/app/calendar">
+          <Link href="/main/calendar">
             <FaCalendarAlt />
             Calendar
           </Link>
-          <Link href="/app/taskboard">
+          <Link href="/main/taskboard">
             <BsKanbanFill />
             Taskboard
           </Link>
