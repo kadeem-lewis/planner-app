@@ -1,6 +1,7 @@
 {
-  "name": "client",
+  "name": "taskbored",
   "version": "0.0.0",
+  "private": true,
   "description": "A planner app to plan your days, weeks and months",
   "scripts": {
     "dev": "next dev --turbo",
