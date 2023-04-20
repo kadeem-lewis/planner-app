@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import NavBar from "@/components/Home/NavBar";
 import { AuthProvider } from "@/contexts/AuthContext";
 
 export const metadata = {
@@ -12,12 +12,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <AuthProvider>
-          <main>{children}</main>
-        </AuthProvider>
-      </body>
-    </html>
+    <>
+      <NavBar />
+      <main>{children}</main>
+    </>
   );
 }

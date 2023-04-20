@@ -11,15 +11,13 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <header>
-          <nav className="navbar">
-            <Link href="/home">Logo</Link>
-          </nav>
-        </header>
-        <main>{children}</main>
-      </body>
-    </html>
+    <>
+      <header>
+        <nav className="navbar">
+          <Link href="/home">Logo</Link>
+        </nav>
+      </header>
+      <main>{children}</main>
+    </>
   );
 }

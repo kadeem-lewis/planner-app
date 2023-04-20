@@ -18,7 +18,7 @@ export default function NavBar() {
     if (logout) {
       try {
         await logout();
-        router.push("/auth/login");
+        router.push("/login");
       } catch (err) {
         setError("failed to log out");
       }

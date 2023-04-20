@@ -5,34 +5,43 @@ import SignInOptions from "@/components/Auth/SignInOptions";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export default function LogIn() {
+export default function SignUp() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const confirmPasswordRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { signup } = useAuth();
   const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (emailRef.current && passwordRef.current && login) {
+    if (
+      emailRef.current &&
+      passwordRef.current &&
+      confirmPasswordRef.current &&
+      signup
+    ) {
+      if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+        return setError("Passwords do not match");
+      }
       try {
         setError("");
         setLoading(true);
-        await login(emailRef.current.value, passwordRef.current.value);
+        await signup(emailRef.current.value, passwordRef.current.value);
         router.push("/main/today");
       } catch (error) {
-        setError("Failed to login");
+        setError("Failed to create an account");
       }
       setLoading(false);
     }
   };
-
   return (
     <div className="flex justify-center items-center">
       <div className="max-w-lg">
-        <h2 className="text-2xl font-bold">Log in</h2>
+        <h2 className=" text-2xl font-bold">Sign Up</h2>
         {error && <div className="alert alert-error">{error}</div>}
+
         <SignInOptions setError={setError} />
         <div className="divider">OR</div>
         <form className="form-control" onSubmit={(e) => handleSubmit(e)}>
@@ -52,20 +61,26 @@ export default function LogIn() {
             ref={passwordRef}
             className="input input-bordered"
           />
-          <Link href="../password" className="link">
-            Forgot Password?
-          </Link>
-          <input type="submit" value="Register" className="btn" />
+          <label htmlFor="confirm-password">Confirm Password:</label>
+          <input
+            type="password"
+            name="confirm-password"
+            id="confirm-password"
+            ref={confirmPasswordRef}
+            className=" input input-bordered"
+          />
+          <input
+            type="submit"
+            value="Register"
+            className="btn"
+            disabled={loading}
+          />
         </form>
-        <p>
-          By continuing with Google, Apple, or Email, you agree to planner-app
-          Terms of Service and Privacy Policy.
-        </p>
         <div className="divider" />
         <p>
-          Don&apos;t have an account yet?{" "}
-          <Link href="/auth/signup" className="link">
-            Sign up
+          Already have an account?{" "}
+          <Link href="/login" className="link">
+            Log in
           </Link>
         </p>
       </div>

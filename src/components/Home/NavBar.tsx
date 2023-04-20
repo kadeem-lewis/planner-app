@@ -6,10 +6,10 @@ export default function NavBar() {
         <Link href="/">Taskbored</Link>
         <div>
           <button className="btn mr-4">
-            <Link href="auth/signup">Signup</Link>
+            <Link href="/signup">Signup</Link>
           </button>
           <button className="btn">
-            <Link href="auth/login">Login</Link>
+            <Link href="/login">Login</Link>
           </button>
         </div>
       </nav>
