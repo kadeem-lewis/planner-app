@@ -32,7 +32,7 @@ export default function NavBar() {
           <button className="btn btn-square btn-ghost">
             <FaBars />
           </button>
-          <Link href="today" className="btn btn-ghost">
+          <Link href="/main/today" className="btn btn-ghost">
             <AiFillHome />
           </Link>
         </div>
