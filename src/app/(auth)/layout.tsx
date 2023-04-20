@@ -14,7 +14,9 @@ export default function AuthLayout({
     <>
       <header>
         <nav className="navbar">
-          <Link href="/home">Logo</Link>
+          <Link href="/" className=" px-4 text-xl font-bold">
+            Taskbored
+          </Link>
         </nav>
       </header>
       <main>{children}</main>
