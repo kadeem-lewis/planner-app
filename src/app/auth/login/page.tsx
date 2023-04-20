@@ -3,6 +3,7 @@ import React, { useRef, useState, FormEvent } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import SignInOptions from "@/components/Auth/SignInOptions";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function LogIn() {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -10,7 +11,7 @@ export default function LogIn() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,7 +20,7 @@ export default function LogIn() {
         setError("");
         setLoading(true);
         await login(emailRef.current.value, passwordRef.current.value);
-        navigate("../../app/today");
+        router.push("/app/today");
       } catch (error) {
         setError("Failed to login");
       }

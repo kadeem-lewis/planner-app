@@ -1,23 +1,23 @@
 "use client";
 import React, { Dispatch, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import Link from "next/link";
 import { FaUserSecret } from "react-icons/fa";
 import { useAuth } from "../../contexts/AuthContext";
+import { useRouter } from "next/router";
 interface Props {
   setError: Dispatch<React.SetStateAction<string>>;
 }
 export default function SignInOptions({ setError }: Props) {
   const [loading, setLoading] = useState(false);
   const { googleSignUp, anonymousSignUp } = useAuth();
-  const navigate = useNavigate();
+  const router = useRouter();
   const handleGoogleSignUp = async () => {
     if (googleSignUp) {
       try {
         setError("");
         setLoading(true);
         await googleSignUp();
-        navigate("../../app/today");
+        router.push("/app/today");
       } catch (err) {
         setError("Google Sign up failed");
       }
@@ -30,7 +30,7 @@ export default function SignInOptions({ setError }: Props) {
         setError("");
         setLoading(true);
         await anonymousSignUp();
-        navigate("../../app/today");
+        router.push("/app/today");
       } catch (err) {
         setError("Google Sign up failed");
       }

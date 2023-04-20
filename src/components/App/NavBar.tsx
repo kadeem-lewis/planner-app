@@ -6,18 +6,19 @@ import ActivityButton from "./ActivityButton";
 import NotificationTab from "./NotificationTab";
 import Link from "next/link";
 import { useAuth } from "../../contexts/AuthContext";
+import { useRouter } from "next/router";
 
 export default function NavBar() {
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleLogOut = async () => {
     setError("");
     if (logout) {
       try {
         await logout();
-        navigate("../../auth/login");
+        router.push("/auth/login");
       } catch (err) {
         setError("failed to log out");
       }
