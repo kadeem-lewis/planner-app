@@ -3,7 +3,7 @@ import React, { Dispatch, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaUserSecret } from "react-icons/fa";
 import { useAuth } from "../../contexts/AuthContext";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 interface Props {
   setError: Dispatch<React.SetStateAction<string>>;
 }
@@ -17,7 +17,7 @@ export default function SignInOptions({ setError }: Props) {
         setError("");
         setLoading(true);
         await googleSignUp();
-        router.push("/app/today");
+        router.push("/main/today");
       } catch (err) {
         setError("Google Sign up failed");
       }
@@ -30,7 +30,7 @@ export default function SignInOptions({ setError }: Props) {
         setError("");
         setLoading(true);
         await anonymousSignUp();
-        router.push("/app/today");
+        router.push("/main/today");
       } catch (err) {
         setError("Google Sign up failed");
       }

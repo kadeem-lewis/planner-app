@@ -6,7 +6,7 @@ import ActivityButton from "./ActivityButton";
 import NotificationTab from "./NotificationTab";
 import Link from "next/link";
 import { useAuth } from "../../contexts/AuthContext";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function NavBar() {
   const { currentUser, logout } = useAuth();

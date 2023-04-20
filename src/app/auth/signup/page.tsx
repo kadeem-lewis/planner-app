@@ -3,7 +3,7 @@ import React, { useRef, useState, FormEvent } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import SignInOptions from "@/components/Auth/SignInOptions";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -29,7 +29,7 @@ export default function SignUp() {
         setError("");
         setLoading(true);
         await signup(emailRef.current.value, passwordRef.current.value);
-        router.push("/app/today");
+        router.push("/main/today");
       } catch (error) {
         setError("Failed to create an account");
       }
@@ -79,7 +79,7 @@ export default function SignUp() {
         <div className="divider" />
         <p>
           Already have an account?{" "}
-          <Link href="../login" className="link">
+          <Link href="/auth/login" className="link">
             Log in
           </Link>
         </p>
