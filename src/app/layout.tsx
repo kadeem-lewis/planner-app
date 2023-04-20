@@ -1,6 +1,6 @@
 import NavBar from "@/components/Home/NavBar";
-import Providers from "./providers";
 import "./globals.css";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 export const metadata = {
   title: "Taskbored",
@@ -15,10 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>
+        <AuthProvider>
           <NavBar />
           <main>{children}</main>
-        </Providers>
+        </AuthProvider>
       </body>
     </html>
   );
