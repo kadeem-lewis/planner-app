@@ -37,7 +37,7 @@ export default function SignUp() {
     }
   };
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex items-center justify-center">
       <div className="max-w-lg">
         <h2 className=" text-2xl font-bold">Sign Up</h2>
         {error && <div className="alert alert-error">{error}</div>}
@@ -51,7 +51,7 @@ export default function SignUp() {
             name="email"
             id="email"
             ref={emailRef}
-            className=" input input-bordered"
+            className=" input-bordered input"
           />
           <label htmlFor="password">Password:</label>
           <input
@@ -59,7 +59,7 @@ export default function SignUp() {
             name="password"
             id="password"
             ref={passwordRef}
-            className="input input-bordered"
+            className="input-bordered input"
           />
           <label htmlFor="confirm-password">Confirm Password:</label>
           <input
@@ -67,7 +67,7 @@ export default function SignUp() {
             name="confirm-password"
             id="confirm-password"
             ref={confirmPasswordRef}
-            className=" input input-bordered"
+            className=" input-bordered input"
           />
           <input
             type="submit"
