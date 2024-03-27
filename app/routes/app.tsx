@@ -1,5 +1,7 @@
+import { Outlet } from "react-router-dom";
 import NavBar from "~/components/main/NavBar";
 import SideBar from "~/components/main/SideBar";
+import { FirestoreProvider } from "~/contexts/FirestoreContext";
 
 export const meta = () => {
   return [
@@ -10,13 +12,18 @@ export const meta = () => {
   ];
 };
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default function AppLayout() {
   return (
     <>
       <NavBar />
       <main className="grid grid-cols-10 min-h-screen">
         <SideBar />
-        <div className="col-span-8">{children}</div>
+
+        <div className="col-span-8">
+          <FirestoreProvider>
+          <Outlet/>
+          </FirestoreProvider>
+          </div>
       </main>
     </>
   );
