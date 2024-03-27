@@ -21,7 +21,10 @@ export default function AppLayout() {
 
         <div className="col-span-8">
           <FirestoreProvider>
+            <div className="p-4 lg:p-6">
+
           <Outlet/>
+            </div>
           </FirestoreProvider>
           </div>
       </main>
