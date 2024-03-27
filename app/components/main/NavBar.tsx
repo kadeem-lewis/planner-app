@@ -31,8 +31,8 @@ export default function NavBar() {
   };
 
   return (
-    <header>
-      <nav className="navbar flex justify-between bg-base-300">
+    <header className="bg-muted/40 border-b">
+      <nav className="navbar flex justify-between">
         <div id="nav-left" className="gap-x-1">
           <Button variant="ghost">
             <Menu />

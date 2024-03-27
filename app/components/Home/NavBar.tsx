@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 export default function NavBar() {
   return (
     <header>
-      <nav className="navbar flex justify-between bg-base-200">
+      <nav className="navbar flex justify-between bg-muted/40 border-b">
         <Link to="/" className="px-4 text-xl font-semibold">
           Taskbored
         </Link>

@@ -3,7 +3,7 @@ import { Link } from "@remix-run/react";
 
 export default function SideBar() {
   return (
-    <aside className="menu col-span-2 bg-base-200">
+    <aside className="menu col-span-2 bg-muted/40 border-r">
       <ul>
         <li>
           <Link to="/app/today">
