@@ -1,6 +1,9 @@
 import React, { Dispatch, useRef, FormEvent } from "react";
 import { useFireStore } from "../../contexts/FirestoreContext";
-import { Timestamp } from "firebase/firestore";
+import { Textarea } from "../ui/textarea";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+import { Button } from "../ui/button";
 interface Props {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
 }
@@ -34,19 +37,17 @@ export default function CreateTask({ setIsOpen }: Props) {
   };
   return (
     <form onSubmit={(e) => handleFormSubmit(e)} className="form-control">
-      <label htmlFor="title" className="label">
-        Title:
-      </label>
-      <input type="text" name="title" className="input" ref={titleRef} />
-      <label htmlFor="description">Description:</label>
-      <textarea
+      <Label htmlFor="title">Title:</Label>
+      <Input type="text" name="title" className="input" ref={titleRef} />
+      <Label htmlFor="description">Description:</Label>
+      <Textarea
         name="description"
         placeholder="Description"
         className="textarea"
         ref={descRef}
-      ></textarea>
-      <label htmlFor="due-date">Due Date:</label>
-      <input type="date" name="due-date" ref={dateRef} className="input" />
+      />
+      <Label htmlFor="due-date">Due Date:</Label>
+      <Input type="date" name="due-date" ref={dateRef} className="input" />
       <select
         name="progress"
         ref={selectRef}
@@ -57,7 +58,7 @@ export default function CreateTask({ setIsOpen }: Props) {
         <option value="In Progress">In Progress</option>
         <option value="Completed">Completed</option>
       </select>
-      <input type="submit" value="Add" className="btn" />
+      <Button type="submit" variant="default" />
     </form>
   );
 }

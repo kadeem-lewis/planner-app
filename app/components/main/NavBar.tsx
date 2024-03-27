@@ -3,7 +3,15 @@ import { Home, Bell, Menu } from "lucide-react";
 import ActivityButton from "./ActivityButton";
 import NotificationTab from "./NotificationTab";
 import { Link, useNavigate } from "@remix-run/react";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "~/contexts/AuthContext";
+import { Avatar, AvatarFallback } from "../ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
+import { Button, buttonVariants } from "../ui/button";
 
 export default function NavBar() {
   const { currentUser, logout } = useAuth();
@@ -26,49 +34,52 @@ export default function NavBar() {
     <header>
       <nav className="navbar flex justify-between bg-base-300">
         <div id="nav-left" className="gap-x-1">
-          <button className="btn btn-square btn-ghost">
+          <Button variant="ghost">
             <Menu />
-          </button>
-          <Link to="/app/today" className="btn btn-ghost">
+          </Button>
+          <Link
+            to="/app/today"
+            className={buttonVariants({ variant: "ghost" })}
+          >
             <Home />
           </Link>
         </div>
         <div id="nav-right" className="gap-x-1">
           <ActivityButton />
-          <div className="dropdown dropdown-bottom dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost">
-              <Bell />
-            </label>
-            <NotificationTab />
-          </div>
-          <div className="dropdown dropdown-end">
-            <label
-              tabIndex={0}
-              className="btn btn-ghost btn-circle avatar placeholder"
-            >
-              <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
-                <span className="text-xl">
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <Button variant="ghost">
+                <Bell />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>
+                <NotificationTab />
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <Avatar>
+                <AvatarFallback>
                   {currentUser?.email?.[0] ?? "NA"}
-                </span>
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-            >
-              <li>
+                </AvatarFallback>
+              </Avatar>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>
                 <Link to="#">Profile</Link>
-              </li>
-              <li>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
                 <Link to="#">Settings</Link>
-              </li>
-              <li>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
                 <Link to="#" onClick={() => handleLogOut()}>
                   Logout
                 </Link>
-              </li>
-            </ul>
-          </div>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </nav>
     </header>

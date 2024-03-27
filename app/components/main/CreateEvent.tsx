@@ -1,6 +1,8 @@
 import React, { Dispatch, useRef, FormEvent } from "react";
-import { Timestamp } from "firebase/firestore";
 import { useFireStore } from "../../contexts/FirestoreContext";
+import { Button } from "../ui/button";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
 interface Props {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
 }
@@ -32,19 +34,19 @@ export default function CreateEvent({ setIsOpen }: Props) {
   };
   return (
     <form onSubmit={(e) => handleFormSubmit(e)} className="form-control">
-      <label htmlFor="title" className="label">
+      <Label htmlFor="title" className="label">
         Title:
-      </label>
-      <input type="text" name="title" className="input" ref={titleRef} />
-      <label htmlFor="start-time" className="label">
+      </Label>
+      <Input type="text" name="title" className="input" ref={titleRef} />
+      <Label htmlFor="start-time" className="label">
         Start
-      </label>
+      </Label>
       <input type="datetime-local" name="start-time" ref={startDateRef} />
-      <label htmlFor="end-time" className="label">
+      <Label htmlFor="end-time" className="label">
         End
-      </label>
+      </Label>
       <input type="datetime-local" name="end-time" ref={endDateRef} />
-      <input type="submit" value="Add" className="btn" />
+      <Button type="submit" variant="default" />
     </form>
   );
 }
