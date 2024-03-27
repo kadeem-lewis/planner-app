@@ -1,9 +1,7 @@
-"use client";
-import React, { useRef, useState, FormEvent } from "react";
-import { useAuth } from "@/contexts/AuthContext";
-import SignInOptions from "@/components/Auth/SignInOptions";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRef, useState, FormEvent } from "react";
+import { useAuth } from "~/contexts/AuthContext";
+import SignInOptions from "~/components/Auth/SignInOptions";
+import { Link, useNavigate } from "@remix-run/react";
 
 export default function SignUp() {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -12,7 +10,7 @@ export default function SignUp() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { signup } = useAuth();
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,7 +27,7 @@ export default function SignUp() {
         setError("");
         setLoading(true);
         await signup(emailRef.current.value, passwordRef.current.value);
-        router.push("/main/today");
+        navigate("/app/today");
       } catch (error) {
         setError("Failed to create an account");
       }
@@ -79,7 +77,7 @@ export default function SignUp() {
         <div className="divider" />
         <p>
           Already have an account?{" "}
-          <Link href="/login" className="link">
+          <Link to="/auth/login" className="link">
             Log in
           </Link>
         </p>

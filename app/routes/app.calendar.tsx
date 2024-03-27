@@ -1,11 +1,10 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import ActivityModal from "@/components/main/ActivityModal";
-import { useFireStore } from "@/contexts/FirestoreContext";
+import ActivityModal from "~/components/main/ActivityModal";
+import { useFireStore } from "~/contexts/FirestoreContext";
 import { EventInput } from "@fullcalendar/core";
 
 export default function Calendar() {
@@ -15,7 +14,8 @@ export default function Calendar() {
   const [activities, setActivities] = useState<EventInput>([]);
 
   console.log(activities);
-  const filterActivities = () => {
+
+  const filterActivities = useCallback(() => {
     const filteredEvents = events
       ? events.map((event) => {
           return {
@@ -37,11 +37,11 @@ export default function Calendar() {
         })
       : [];
     setActivities([...filteredEvents, ...filteredTasks]);
-  };
+  }, [events, tasks]);
 
   useEffect(() => {
     filterActivities();
-  }, [events, tasks]);
+  }, [events, filterActivities, tasks]);
   return (
     <div>
       <FullCalendar

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@remix-run/react";
 const APP_FEATURES = [
   {
     heading: "Effortless Planning",
@@ -37,7 +37,7 @@ export default function LandingPage() {
           and enhance productivity.
         </h2>
         <button className=" rounded-lg bg-blue-500 px-3 py-2 font-semibold text-white hover:bg-blue-600">
-          <Link href="/signup">Start for free</Link>
+          <Link to="/auth/signup">Start for free</Link>
         </button>
         {/* Some sort of image */}
       </section>
@@ -57,7 +57,7 @@ export default function LandingPage() {
           Ready to take control of your time?
         </h3>
         <button className="rounded-lg bg-blue-500 px-3 py-2 font-semibold text-white hover:bg-blue-600">
-          <Link href="/signup">Start for free</Link>
+          <Link to="/auth/signup">Start for free</Link>
         </button>
       </section>
     </div>

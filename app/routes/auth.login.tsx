@@ -1,9 +1,7 @@
-"use client";
-import React, { useRef, useState, FormEvent } from "react";
-import { useAuth } from "@/contexts/AuthContext";
-import SignInOptions from "@/components/Auth/SignInOptions";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRef, useState, FormEvent } from "react";
+import { useAuth } from "~/contexts/AuthContext";
+import SignInOptions from "~/components/Auth/SignInOptions";
+import { useNavigate, Link } from "@remix-run/react";
 
 export default function LogIn() {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -11,7 +9,7 @@ export default function LogIn() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,7 +18,7 @@ export default function LogIn() {
         setError("");
         setLoading(true);
         await login(emailRef.current.value, passwordRef.current.value);
-        router.push("/main/today");
+        navigate("/app/today");
       } catch (error) {
         setError("Failed to login");
       }
@@ -52,7 +50,7 @@ export default function LogIn() {
             ref={passwordRef}
             className="input input-bordered"
           />
-          <Link href="../password" className="link">
+          <Link to="/auth/password" className="link">
             Forgot Password?
           </Link>
           <input type="submit" value="Register" className="btn" />
@@ -64,7 +62,7 @@ export default function LogIn() {
         <div className="divider" />
         <p>
           Don&apos;t have an account yet?{" "}
-          <Link href="/signup" className="link">
+          <Link to="/auth/signup" className="link">
             Sign up
           </Link>
         </p>
