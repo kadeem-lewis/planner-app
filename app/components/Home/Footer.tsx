@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 
 export default function Footer() {
   return (
-    <footer className="  text-left">
+    <footer className="text-left">
       <div className="grid grid-cols-4">
         <section className="col-span-1">
           <h5>Products</h5>
