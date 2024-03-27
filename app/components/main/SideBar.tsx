@@ -1,21 +1,21 @@
 import { FaCalendarDay, FaCalendarAlt } from "react-icons/fa";
 import { BsKanbanFill } from "react-icons/bs";
-import Link from "next/link";
+import { Link } from "@remix-run/react";
 
 export default function SideBar() {
   return (
     <aside className="menu col-span-2 bg-base-200">
       <ul>
         <li>
-          <Link href="/main/today">
+          <Link to="/app/today">
             <FaCalendarDay />
             Today
           </Link>
-          <Link href="/main/calendar">
+          <Link to="/app/calendar">
             <FaCalendarAlt />
             Calendar
           </Link>
-          <Link href="/main/taskboard">
+          <Link to="/app/taskboard">
             <BsKanbanFill />
             Taskboard
           </Link>

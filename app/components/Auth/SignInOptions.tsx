@@ -1,23 +1,22 @@
-"use client";
 import React, { Dispatch, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaUserSecret } from "react-icons/fa";
 import { useAuth } from "../../contexts/AuthContext";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "@remix-run/react";
 interface Props {
   setError: Dispatch<React.SetStateAction<string>>;
 }
 export default function SignInOptions({ setError }: Props) {
   const [loading, setLoading] = useState(false);
   const { googleSignUp, anonymousSignUp } = useAuth();
-  const router = useRouter();
+  const navigate = useNavigate();
   const handleGoogleSignUp = async () => {
     if (googleSignUp) {
       try {
         setError("");
         setLoading(true);
         await googleSignUp();
-        router.push("/main/today");
+        navigate("/app/today");
       } catch (err) {
         setError("Google Sign up failed");
       }
@@ -30,7 +29,7 @@ export default function SignInOptions({ setError }: Props) {
         setError("");
         setLoading(true);
         await anonymousSignUp();
-        router.push("/main/today");
+        navigate("/app/today");
       } catch (err) {
         setError("Google Sign up failed");
       }

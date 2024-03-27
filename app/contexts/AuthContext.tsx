@@ -1,4 +1,3 @@
-"use client";
 import {
   createContext,
   useContext,
@@ -17,7 +16,7 @@ import {
 } from "firebase/auth";
 
 import firebase from "firebase/compat/app";
-import { auth, googleProvider } from "../config/firebase";
+import { auth, googleProvider } from "~/config/firebase";
 interface Props {
   children: ReactNode;
 }

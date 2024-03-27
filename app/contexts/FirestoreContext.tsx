@@ -1,4 +1,3 @@
-"use client";
 import {
   createContext,
   useContext,
@@ -6,7 +5,7 @@ import {
   useState,
   ReactNode,
 } from "react";
-import { db } from "../config/firebase";
+import { db } from "~/config/firebase";
 import {
   collection,
   addDoc,

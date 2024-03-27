@@ -1,4 +1,3 @@
-"use client";
 import React, { useState, Dispatch } from "react";
 import Dialog from "../Dialog";
 import CreateEvent from "./CreateEvent";

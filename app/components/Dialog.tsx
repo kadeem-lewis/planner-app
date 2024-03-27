@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import { Dispatch } from "react";
 import { FaWindowClose } from "react-icons/fa";
 interface Props {
   children: React.ReactNode;

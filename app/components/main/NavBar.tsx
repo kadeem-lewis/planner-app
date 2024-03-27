@@ -1,24 +1,22 @@
-"use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaBars, FaBell } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import ActivityButton from "./ActivityButton";
 import NotificationTab from "./NotificationTab";
-import Link from "next/link";
+import { Link, useNavigate } from "@remix-run/react";
 import { useAuth } from "../../contexts/AuthContext";
-import { useRouter } from "next/navigation";
 
 export default function NavBar() {
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const handleLogOut = async () => {
     setError("");
     if (logout) {
       try {
         await logout();
-        router.push("/login");
+        navigate("/login");
       } catch (err) {
         setError("failed to log out");
       }
@@ -32,7 +30,7 @@ export default function NavBar() {
           <button className="btn btn-square btn-ghost">
             <FaBars />
           </button>
-          <Link href="/main/today" className="btn btn-ghost">
+          <Link to="/app/today" className="btn btn-ghost">
             <AiFillHome />
           </Link>
         </div>
