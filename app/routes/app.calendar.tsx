@@ -61,7 +61,6 @@ export default function Calendar() {
         <ActivityModal
           setIsOpen={setIsOpen}
           activityType={activityType}
-          setActivityType={setActivityType}
         ></ActivityModal>
       )}
     </div>
