@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { FaWindowClose } from "react-icons/fa";
+import { X } from "lucide-react";
 interface Props {
   children: React.ReactNode;
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
@@ -13,7 +13,7 @@ export default function Dialog({ children, setIsOpen }: Props) {
           className="btn btn-sm btn-circle absolute right-2 top-2"
           onClick={() => setIsOpen(false)}
         >
-          <FaWindowClose />
+          <X />
         </label>
         {children}
       </div>

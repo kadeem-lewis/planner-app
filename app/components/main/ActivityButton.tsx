@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { FaPlus } from "react-icons/fa";
+import { useState } from "react";
+import { Plus } from "lucide-react";
 import ActivityModal from "./ActivityModal";
 
 export default function ActivityButton() {
@@ -13,7 +13,7 @@ export default function ActivityButton() {
     <>
       <div className="dropdown dropdown-bottom dropdown-end">
         <button className="btn btn-ghost m-1">
-          <FaPlus />
+          <Plus />
         </button>
         <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
           <li>

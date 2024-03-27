@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { FaBars, FaBell } from "react-icons/fa";
-import { AiFillHome } from "react-icons/ai";
+import { Home, Bell, Menu } from "lucide-react";
 import ActivityButton from "./ActivityButton";
 import NotificationTab from "./NotificationTab";
 import { Link, useNavigate } from "@remix-run/react";
@@ -28,17 +27,17 @@ export default function NavBar() {
       <nav className="navbar flex justify-between bg-base-300">
         <div id="nav-left" className="gap-x-1">
           <button className="btn btn-square btn-ghost">
-            <FaBars />
+            <Menu />
           </button>
           <Link to="/app/today" className="btn btn-ghost">
-            <AiFillHome />
+            <Home />
           </Link>
         </div>
         <div id="nav-right" className="gap-x-1">
           <ActivityButton />
           <div className="dropdown dropdown-bottom dropdown-end">
             <label tabIndex={0} className="btn btn-ghost">
-              <FaBell />
+              <Bell />
             </label>
             <NotificationTab />
           </div>

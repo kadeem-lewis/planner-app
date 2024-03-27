@@ -1,5 +1,4 @@
-import { FaCalendarDay, FaCalendarAlt } from "react-icons/fa";
-import { BsKanbanFill } from "react-icons/bs";
+import { Calendar, CalendarDays, SquareKanban } from "lucide-react";
 import { Link } from "@remix-run/react";
 
 export default function SideBar() {
@@ -8,15 +7,15 @@ export default function SideBar() {
       <ul>
         <li>
           <Link to="/app/today">
-            <FaCalendarDay />
+            <Calendar />
             Today
           </Link>
           <Link to="/app/calendar">
-            <FaCalendarAlt />
+            <CalendarDays />
             Calendar
           </Link>
           <Link to="/app/taskboard">
-            <BsKanbanFill />
+            <SquareKanban />
             Taskboard
           </Link>
         </li>

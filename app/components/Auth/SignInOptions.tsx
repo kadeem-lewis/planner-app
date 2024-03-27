@@ -1,6 +1,5 @@
 import React, { Dispatch, useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { FaUserSecret } from "react-icons/fa";
+import { Icons } from "../Icons";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "@remix-run/react";
 interface Props {
@@ -44,7 +43,7 @@ export default function SignInOptions({ setError }: Props) {
         className="btn w-full"
         disabled={loading}
       >
-        <FcGoogle className="mr-4" />
+        <Icons.google className="mr-4 size-4" />
         Sign in with Google
       </button>
       <button
@@ -52,7 +51,7 @@ export default function SignInOptions({ setError }: Props) {
         onClick={() => handleAnonymousSignUp()}
         disabled={loading}
       >
-        <FaUserSecret className="mr-4" />
+        <Icons.secretUser className="mr-4 size-4" />
         Sign in Anonymously
       </button>
     </div>
