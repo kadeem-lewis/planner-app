@@ -23,7 +23,7 @@ export default function NavBar() {
     if (logout) {
       try {
         await logout();
-        navigate("/login");
+        navigate("/auth/login");
       } catch (err) {
         setError("failed to log out");
       }
