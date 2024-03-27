@@ -58,13 +58,15 @@ export default function NavBar() {
               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Profile</a>
+                <Link to="#">Profile</Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to="#">Settings</Link>
               </li>
               <li>
-                <a onClick={() => handleLogOut()}>Logout</a>
+                <Link to="#" onClick={() => handleLogOut()}>
+                  Logout
+                </Link>
               </li>
             </ul>
           </div>
