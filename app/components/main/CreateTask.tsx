@@ -4,10 +4,10 @@ import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
-interface Props {
+type  CreateTaskProps ={
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
 }
-export default function CreateTask({ setIsOpen }: Props) {
+export default function CreateTask({ setIsOpen }: CreateTaskProps) {
   const { addTask } = useFireStore();
   const titleRef = useRef<HTMLInputElement>(null);
   const descRef = useRef<HTMLTextAreaElement>(null);

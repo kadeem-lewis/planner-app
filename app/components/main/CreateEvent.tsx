@@ -3,10 +3,10 @@ import { useFireStore } from "../../contexts/FirestoreContext";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-interface Props {
+type CreateEventProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
 }
-export default function CreateEvent({ setIsOpen }: Props) {
+export default function CreateEvent({ setIsOpen }: CreateEventProps) {
   const { addEvent } = useFireStore();
   const titleRef = useRef<HTMLInputElement>(null);
   const startDateRef = useRef<HTMLInputElement>(null);
