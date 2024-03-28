@@ -1,23 +1,21 @@
-import React, { Dispatch, useState } from "react";
+import {  useState } from "react";
 import { Icons } from "../Icons";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "@remix-run/react";
-interface Props {
-  setError: Dispatch<React.SetStateAction<string>>;
-}
-export default function SignInOptions({ setError }: Props) {
+import { Button } from "../ui/button";
+
+export default function SignInOptions() {
   const [loading, setLoading] = useState(false);
   const { googleSignUp, anonymousSignUp } = useAuth();
   const navigate = useNavigate();
   const handleGoogleSignUp = async () => {
     if (googleSignUp) {
       try {
-        setError("");
         setLoading(true);
         await googleSignUp();
         navigate("/app/today");
       } catch (err) {
-        setError("Google Sign up failed");
+        console.error(err);
       }
     }
     setLoading(false);
@@ -25,12 +23,11 @@ export default function SignInOptions({ setError }: Props) {
   const handleAnonymousSignUp = async () => {
     if (anonymousSignUp) {
       try {
-        setError("");
         setLoading(true);
         await anonymousSignUp();
         navigate("/app/today");
       } catch (err) {
-        setError("Google Sign up failed");
+        console.error(err);
       }
     }
     setLoading(false);
@@ -38,22 +35,24 @@ export default function SignInOptions({ setError }: Props) {
 
   return (
     <div className=" space-y-4">
-      <button
+      <Button
         onClick={() => handleGoogleSignUp()}
-        className="btn w-full"
+        variant="default"
+        className="w-full uppercase font-semibold text-muted"
         disabled={loading}
       >
         <Icons.google className="mr-4 size-4" />
         Sign in with Google
-      </button>
-      <button
-        className="btn w-full"
+      </Button>
+      <Button
+      variant="default"
+        className="w-full uppercase font-semibold text-muted"
         onClick={() => handleAnonymousSignUp()}
         disabled={loading}
       >
         <Icons.secretUser className="mr-4 size-4" />
         Sign in Anonymously
-      </button>
+      </Button>
     </div>
   );
 }

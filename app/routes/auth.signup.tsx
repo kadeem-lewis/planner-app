@@ -1,87 +1,114 @@
-import { useRef, useState, FormEvent } from "react";
+import { useState } from "react";
 import { useAuth } from "~/contexts/AuthContext";
 import SignInOptions from "~/components/Auth/SignInOptions";
 import { Link, useNavigate } from "@remix-run/react";
+import { Button } from "~/components/ui/button";
+import { Input } from "~/components/ui/input";
+import {z} from "zod";
+import { useForm } from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "~/components/ui/card";
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "~/components/ui/form";
+
+const formSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+});
+
+type SignupSchema = z.infer<typeof formSchema>;
 
 export default function SignUp() {
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
-  const confirmPasswordRef = useRef<HTMLInputElement>(null);
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { signup } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const form = useForm<SignupSchema>({
+    resolver: zodResolver(formSchema),
+    defaultValues:{
+      email:"",
+      password:""
+    }
+  });
+
+  async function onSubmit(values: SignupSchema) {
     if (
-      emailRef.current &&
-      passwordRef.current &&
-      confirmPasswordRef.current &&
       signup
     ) {
-      if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-        return setError("Passwords do not match");
-      }
       try {
-        setError("");
         setLoading(true);
-        await signup(emailRef.current.value, passwordRef.current.value);
+        await signup(values.email, values.password);
         navigate("/app/today");
       } catch (error) {
-        setError("Failed to create an account");
+        console.error(error);
       }
       setLoading(false);
     }
-  };
+  }
   return (
-    <div className="flex items-center justify-center">
-      <div className="max-w-lg">
-        <h2 className=" text-2xl font-bold">Sign Up</h2>
-        {error && <div className="alert alert-error">{error}</div>}
+  <>
+<Card className="max-w-lg mx-auto">
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-2xl">Sign Up</CardTitle>
+        <CardDescription>Create an Account</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <SignInOptions />
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-background px-2 text-muted-foreground">
+              Or continue with
+            </span>
+          </div>
+        </div>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
 
-        <SignInOptions setError={setError} />
-        <div className="divider">OR</div>
-        <form className="form-control" onSubmit={(e) => handleSubmit(e)}>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            ref={emailRef}
-            className=" input-bordered input"
+          <FormField
+          control={form.control}
+          name="email"
+          render={({field})=>(
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="hi@email.com"/>
+                </FormControl>
+            </FormItem>
+          )}
           />
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            ref={passwordRef}
-            className="input-bordered input"
+          <FormField
+          control={form.control}
+          name="password"
+          render={({field})=>(
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="********"/>
+                </FormControl>
+                <FormMessage/>
+                <Link to="/auth/password">
+            Forgot Password?
+          </Link>
+            </FormItem>
+          )}
           />
-          <label htmlFor="confirm-password">Confirm Password:</label>
-          <input
-            type="password"
-            name="confirm-password"
-            id="confirm-password"
-            ref={confirmPasswordRef}
-            className=" input-bordered input"
-          />
-          <input
-            type="submit"
-            value="Register"
-            className="btn"
-            disabled={loading}
-          />
-        </form>
-        <div className="divider" />
+          <Button type="submit">Submit</Button>
+          </form>
+        </Form>
+        
+
+      </CardContent>
+      <CardFooter>
         <p>
-          Already have an account?{" "}
+        Already have an account?{" "}
           <Link to="/auth/login" className="link">
             Log in
           </Link>
         </p>
-      </div>
-    </div>
+      </CardFooter>
+    </Card>
+  </>
   );
 }
