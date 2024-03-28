@@ -8,23 +8,19 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { Dialog, DialogHeader } from "../ui/dialog";
-import {
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from "@radix-ui/react-dialog";
+import { Dialog, DialogHeader,  DialogContent,
+  DialogTitle, } from "../ui/dialog";
+
 
 export default function ActivityButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [activityType, setActivityType] = useState("");
-  const createActivity = (activity: string) => {
+  const createActivity = (activity: "event"|"task") => {
     setActivityType(activity);
     setIsOpen(true);
   };
   return (
     <>
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Button variant="ghost">
@@ -32,18 +28,15 @@ export default function ActivityButton() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DialogTrigger asChild>
-              <DropdownMenuItem onClick={() => createActivity("event")}>
+              <DropdownMenuItem onSelect={() => createActivity("event")}>
                 Add Event
               </DropdownMenuItem>
-            </DialogTrigger>
-            <DialogTrigger asChild>
-              <DropdownMenuItem onClick={() => createActivity("task")}>
+              <DropdownMenuItem onSelect={() => createActivity("task")}>
                 Add Task
               </DropdownMenuItem>
-            </DialogTrigger>
           </DropdownMenuContent>
         </DropdownMenu>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Add {activityType}</DialogTitle>

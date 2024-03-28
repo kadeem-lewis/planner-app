@@ -1,16 +1,13 @@
 import React, { Dispatch } from "react";
 import CreateEvent from "./CreateEvent";
 import CreateTask from "./CreateTask";
-import { Tabs, TabsList } from "../ui/tabs";
-import { TabsContent, TabsTrigger } from "@radix-ui/react-tabs";
-import Dialog from "../Dialog";
+import { Tabs, TabsList,TabsContent, TabsTrigger } from "../ui/tabs";
 interface Props {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
   activityType: string;
 }
 export default function ActivityModal({ setIsOpen, activityType }: Props) {
   return (
-    <Dialog setIsOpen={setIsOpen}>
       <Tabs defaultValue={activityType}>
         <TabsList>
           <TabsTrigger value="event">Event</TabsTrigger>
@@ -23,6 +20,5 @@ export default function ActivityModal({ setIsOpen, activityType }: Props) {
           <CreateTask setIsOpen={setIsOpen} />
         </TabsContent>
       </Tabs>
-    </Dialog>
   );
 }
