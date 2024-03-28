@@ -1,4 +1,4 @@
-import { Calendar, CalendarDays, SquareKanban } from "lucide-react";
+import { Calendar, CalendarDays, SquareKanban,ListChecks } from "lucide-react";
 import {  NavLink } from "@remix-run/react";
 
 export default function SideBar() {
@@ -24,7 +24,7 @@ export default function SideBar() {
             </span>
           </NavLink>
           <NavLink to="/app/habit-tracker" className="flex items-center px-4 py-2 gap-2 text-muted-foreground hover:text-primary mt-5 rounded-lg transition-all">
-            <SquareKanban className="size-5"/>
+            <ListChecks className="size-5"/>
             <span className="font-medium">
               Habit Tracker
             </span>
