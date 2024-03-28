@@ -35,8 +35,8 @@ export default function NavBar() {
 
   return (
     <header className="bg-muted/40 border-b h-14 flex items-center gap-4 px-4 lg:px-6">
-      <nav className="navbar flex justify-between">
-        <div id="nav-left" className="gap-x-1">
+      <nav className="flex items-center justify-between w-full">
+        <div className="gap-x-1">
         <Sheet>
         <SheetTrigger asChild>
           <Button variant="outline" size="icon" className="shrink-0 md:hidden">
@@ -58,7 +58,7 @@ export default function NavBar() {
             <Home />
           </Link>
         </div>
-        <div id="nav-right" className="gap-x-1">
+        <div className="gap-x-1 flex items-center">
           <ActivityButton />
           <DropdownMenu>
             <DropdownMenuTrigger>
