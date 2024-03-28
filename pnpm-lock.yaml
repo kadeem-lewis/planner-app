@@ -124,9 +124,6 @@ devDependencies:
   eslint-plugin-react-hooks:
     specifier: ^4.6.0
     version: 4.6.0(eslint@8.57.0)
-  postcss:
-    specifier: ^8.4.38
-    version: 8.4.38
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
