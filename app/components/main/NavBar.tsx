@@ -90,10 +90,8 @@ export default function NavBar() {
                 <Link to="#">Settings</Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <Link to="#" onClick={() => handleLogOut()}>
+              <DropdownMenuItem onSelect={()=>handleLogOut()}>
                   Logout
-                </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
