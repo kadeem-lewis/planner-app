@@ -22,6 +22,12 @@ export default function CreateEvent({ setIsOpen }: CreateEventProps) {
 
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(
+      titleRef.current?.value,
+      startDateRef.current?.value,
+      endDateRef.current?.value,
+      addEvent,
+    );
     if (
       titleRef.current &&
       endDateRef.current &&
@@ -41,7 +47,7 @@ export default function CreateEvent({ setIsOpen }: CreateEventProps) {
     }
   };
   return (
-    <form onSubmit={(e) => handleFormSubmit(e)} className="form-control">
+    <form onSubmit={(e) => handleFormSubmit(e)}>
       <Label htmlFor="title" className="label">
         Title:
       </Label>
@@ -49,12 +55,14 @@ export default function CreateEvent({ setIsOpen }: CreateEventProps) {
       <Label htmlFor="start-time" className="label">
         Start
       </Label>
-      <input type="datetime-local" name="start-time" ref={startDateRef} />
+      <Input type="datetime-local" name="start-time" ref={startDateRef} />
       <Label htmlFor="end-time" className="label">
         End
       </Label>
-      <input type="datetime-local" name="end-time" ref={endDateRef} />
-      <Button type="submit" variant="default" />
+      <Input type="datetime-local" name="end-time" ref={endDateRef} />
+      <Button type="submit" variant="default" className="w-full">
+        Submit
+      </Button>
     </form>
   );
 }

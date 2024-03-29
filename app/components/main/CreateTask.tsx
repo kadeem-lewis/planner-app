@@ -23,6 +23,14 @@ export default function CreateTask({ setIsOpen }: CreateTaskProps) {
   const dateRef = useRef<HTMLInputElement>(null);
   const selectRef = useRef<HTMLSelectElement>(null);
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    console.log("handleFormSubmit");
+    console.log(
+      titleRef.current?.value,
+      descRef.current?.value,
+      dateRef.current?.value,
+      selectRef.current?.value,
+      addTask,
+    );
     e.preventDefault();
     if (
       titleRef.current &&
@@ -57,17 +65,14 @@ export default function CreateTask({ setIsOpen }: CreateTaskProps) {
       />
       <Label htmlFor="due-date">Due Date:</Label>
       <Input type="date" name="due-date" ref={dateRef} className="input" />
-      <select
-        name="progress"
-        ref={selectRef}
-        className="select select-bordered"
-        defaultValue="Not Started"
-      >
+      <select name="progress" ref={selectRef} defaultValue="Not Started">
         <option value="Not Started">Not Started</option>
         <option value="In Progress">In Progress</option>
         <option value="Completed">Completed</option>
       </select>
-      <Button type="submit" variant="default" />
+      <Button type="submit" variant="default" className="w-full">
+        Submit
+      </Button>
     </form>
   );
 }
