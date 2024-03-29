@@ -22,7 +22,11 @@ import {
   MenuSection,
 } from "~/components/ui/menu";
 import { Button, buttonVariants } from "../button";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import {
+  DialogTrigger,
+  DialogOverlay,
+  DialogContent,
+} from "~/components/ui/dialog";
 
 export default function NavBar() {
   const { currentUser, logout } = useAuth();
@@ -45,42 +49,42 @@ export default function NavBar() {
     <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:px-6">
       <nav className="flex w-full items-center justify-between">
         <div className="gap-x-1">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="shrink-0 md:hidden"
-              >
-                <MenuIcon />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="flex flex-col">
-              <nav className="grid gap-2 p-4 font-medium">
-                <NavLink
-                  to="/app/today"
-                  className="flex items-center gap-4 rounded-xl text-lg font-semibold text-muted-foreground hover:text-foreground"
-                >
-                  <Calendar />
-                  Today
-                </NavLink>
-                <NavLink
-                  to="/app/calendar"
-                  className="flex items-center gap-4 rounded-xl text-lg font-semibold text-muted-foreground hover:text-foreground"
-                >
-                  <CalendarDays />
-                  Calendar
-                </NavLink>
-                <NavLink
-                  to="/app/taskboard"
-                  className="flex items-center gap-4 rounded-xl text-lg font-semibold text-muted-foreground hover:text-foreground"
-                >
-                  <KanbanSquare />
-                  Taskboard
-                </NavLink>
-              </nav>
-            </SheetContent>
-          </Sheet>
+          <DialogTrigger>
+            <Button
+              variant="outline"
+              size="icon"
+              className="shrink-0 md:hidden"
+            >
+              <MenuIcon />
+            </Button>
+            <DialogOverlay>
+              <DialogContent side="left" className="flex flex-col">
+                <nav className="grid gap-2 p-4 font-medium">
+                  <NavLink
+                    to="/app/today"
+                    className="flex items-center gap-4 rounded-xl text-lg font-semibold text-muted-foreground hover:text-foreground"
+                  >
+                    <Calendar />
+                    Today
+                  </NavLink>
+                  <NavLink
+                    to="/app/calendar"
+                    className="flex items-center gap-4 rounded-xl text-lg font-semibold text-muted-foreground hover:text-foreground"
+                  >
+                    <CalendarDays />
+                    Calendar
+                  </NavLink>
+                  <NavLink
+                    to="/app/taskboard"
+                    className="flex items-center gap-4 rounded-xl text-lg font-semibold text-muted-foreground hover:text-foreground"
+                  >
+                    <KanbanSquare />
+                    Taskboard
+                  </NavLink>
+                </nav>
+              </DialogContent>
+            </DialogOverlay>
+          </DialogTrigger>
           <Link
             to="/app/today"
             className={buttonVariants({ variant: "ghost" })}

@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import ActivityModal from "./ActivityModal";
-import { Button } from "../ui/button";
+import { Button } from "../button";
+
+import { Menu, MenuItem, MenuPopover, MenuTrigger } from "../ui/menu";
+import { Key } from "react-aria-components";
+
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-
-import { Menu, MenuHeader, MenuItem, MenuPopover } from "../ui/menu";
-
-import { Dialog, DialogHeader, DialogContent, DialogTitle } from "../ui/dialog";
+  DialogOverlay,
+  DialogTrigger,
+  DialogHeader,
+  DialogContent,
+  DialogTitle,
+} from "~/components/ui/dialog";
 
 export default function ActivityButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,33 +22,39 @@ export default function ActivityButton() {
     setIsOpen(true);
   };
 
-  // ! Activity button is outside of context so it cant add to db currently
+  const onMenuAction = (key: Key) => {
+    console.log(key);
+    if (key === "event") {
+      createActivity("event");
+    } else if (key === "task") {
+      createActivity("task");
+    }
+  };
 
   return (
     <>
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          <Button variant="ghost">
-            <Plus />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem onSelect={() => createActivity("event")}>
-            Add Event
-          </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => createActivity("task")}>
-            Add Task
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Add {activityType}</DialogTitle>
-          </DialogHeader>
-          <ActivityModal setIsOpen={setIsOpen} activityType={activityType} />
-        </DialogContent>
-      </Dialog>
+      <MenuTrigger>
+        <Button variant="ghost">
+          <Plus />
+        </Button>
+        <MenuPopover>
+          <Menu onAction={onMenuAction}>
+            <MenuItem id="event">Add Event</MenuItem>
+            <MenuItem id="task">Add Task</MenuItem>
+          </Menu>
+        </MenuPopover>
+      </MenuTrigger>
+
+      <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
+        <DialogOverlay>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Add {activityType}</DialogTitle>
+            </DialogHeader>
+            <ActivityModal setIsOpen={setIsOpen} activityType={activityType} />
+          </DialogContent>
+        </DialogOverlay>
+      </DialogTrigger>
     </>
   );
 }

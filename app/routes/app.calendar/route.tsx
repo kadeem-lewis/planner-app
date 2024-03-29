@@ -7,7 +7,8 @@ import ActivityModal from "~/components/main/ActivityModal";
 import { useFireStore } from "~/contexts/FirestoreContext";
 import { EventInput } from "@fullcalendar/core";
 import {
-  Dialog,
+  DialogTrigger,
+  DialogOverlay,
   DialogContent,
   DialogHeader,
   DialogTitle,
@@ -15,7 +16,7 @@ import {
 
 export default function Calendar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activityType, setActivityType] = useState("event");
+  const [activityType] = useState("event");
   const { events, tasks } = useFireStore();
   const [activities, setActivities] = useState<EventInput>([]);
 
@@ -63,17 +64,19 @@ export default function Calendar() {
         selectable
         select={() => setIsOpen(true)}
       />
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Add {activityType}</DialogTitle>
-          </DialogHeader>
-          <ActivityModal
-            setIsOpen={setIsOpen}
-            activityType={activityType}
-          ></ActivityModal>
-        </DialogContent>
-      </Dialog>
+      <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
+        <DialogOverlay>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Add {activityType}</DialogTitle>
+            </DialogHeader>
+            <ActivityModal
+              setIsOpen={setIsOpen}
+              activityType={activityType}
+            ></ActivityModal>
+          </DialogContent>
+        </DialogOverlay>
+      </DialogTrigger>
     </div>
   );
 }

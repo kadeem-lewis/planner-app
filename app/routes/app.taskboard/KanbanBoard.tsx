@@ -1,4 +1,4 @@
-import { Button } from "~/components/ui/button";
+import { Button } from "~/components/button";
 import { Plus } from "lucide-react";
 import ActivityCard from "~/components/main/ActivityCard";
 import { Event } from "~/components/main/CreateEvent";
@@ -8,11 +8,11 @@ import { CSS } from "@dnd-kit/utilities";
 import { Input } from "~/components/ui/input";
 import { useState } from "react";
 import {
-  Dialog,
-  DialogContent,
   DialogTrigger,
+  DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogOverlay,
 } from "~/components/ui/dialog";
 
 type KanbanBoardProps = {
@@ -85,20 +85,20 @@ export default function KanbanBoard({ name, activities }: KanbanBoardProps) {
           return <ActivityCard key={activity.title} activity={activity} />;
         })}
       </div>
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogTrigger>
-          <Button variant="default" className="flex gap-2 justify-self-end">
-            <Plus />
-            Add Task
-          </Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Add Task</DialogTitle>
-          </DialogHeader>
-          <CreateTask setIsOpen={setIsOpen} />
-        </DialogContent>
-      </Dialog>
+      <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
+        <Button variant="default" className="flex gap-2 justify-self-end">
+          <Plus />
+          Add Task
+        </Button>
+        <DialogOverlay>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Add Task</DialogTitle>
+            </DialogHeader>
+            <CreateTask setIsOpen={setIsOpen} />
+          </DialogContent>
+        </DialogOverlay>
+      </DialogTrigger>
     </div>
   );
 }
