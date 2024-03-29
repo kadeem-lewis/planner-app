@@ -8,10 +8,10 @@ export default function NavBar() {
           Taskbored
         </Link>
         <div>
-          <Button className="mr-4 rounded-lg px-3 py-2 text-white hover:brightness-110">
+          <Button className="mr-4 rounded-lg px-3 py-2 text-white hover:brightness-110" asChild>
             <Link to="/auth/signup">Signup</Link>
           </Button>
-          <Button className="rounded-lg bg-primary px-3 py-2 font-semibold text-white hover:brightness-110">
+          <Button className="rounded-lg bg-primary px-3 py-2 font-semibold text-white hover:brightness-110" asChild>
             <Link to="/auth/login">Start for free</Link>
           </Button>
         </div>

@@ -37,7 +37,7 @@ export default function LandingPage() {
           Discover the ultimate planner app designed to simplify organization
           and enhance productivity.
         </h2>
-        <Button className=" rounded-lg bg-blue-500 px-3 py-2 font-semibold text-white hover:bg-blue-600">
+        <Button className=" rounded-lg bg-blue-500 px-3 py-2 font-semibold text-white hover:bg-blue-600" asChild>
           <Link to="/auth/signup">Start for free</Link>
         </Button>
         {/* Some sort of image */}
@@ -57,7 +57,7 @@ export default function LandingPage() {
         <h3 className=" text-2xl font-semibold">
           Ready to take control of your time?
         </h3>
-        <Button className="rounded-lg bg-blue-500 px-3 py-2 font-semibold text-white hover:bg-blue-600">
+        <Button className="rounded-lg bg-blue-500 px-3 py-2 font-semibold text-white hover:bg-blue-600" asChild>
           <Link to="/auth/signup">Start for free</Link>
         </Button>
       </section>
