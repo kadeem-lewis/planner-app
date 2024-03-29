@@ -15,18 +15,18 @@ export const meta = () => {
 export default function AppLayout() {
   return (
     <>
-      <NavBar />
-      <main className="grid min-h-screen grid-cols-10">
-        <SideBar />
+      <FirestoreProvider>
+        <NavBar />
+        <main className="grid min-h-screen grid-cols-10">
+          <SideBar />
 
-        <div className="col-span-8">
-          <FirestoreProvider>
+          <div className="col-span-8">
             <div className="p-4 lg:p-6">
               <Outlet />
             </div>
-          </FirestoreProvider>
-        </div>
-      </main>
+          </div>
+        </main>
+      </FirestoreProvider>
     </>
   );
 }

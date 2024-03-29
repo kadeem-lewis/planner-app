@@ -22,12 +22,6 @@ export default function CreateEvent({ setIsOpen }: CreateEventProps) {
 
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(
-      titleRef.current?.value,
-      startDateRef.current?.value,
-      endDateRef.current?.value,
-      addEvent,
-    );
     if (
       titleRef.current &&
       endDateRef.current &&

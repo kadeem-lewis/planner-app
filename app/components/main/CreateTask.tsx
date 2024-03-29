@@ -23,14 +23,6 @@ export default function CreateTask({ setIsOpen }: CreateTaskProps) {
   const dateRef = useRef<HTMLInputElement>(null);
   const selectRef = useRef<HTMLSelectElement>(null);
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    console.log("handleFormSubmit");
-    console.log(
-      titleRef.current?.value,
-      descRef.current?.value,
-      dateRef.current?.value,
-      selectRef.current?.value,
-      addTask,
-    );
     e.preventDefault();
     if (
       titleRef.current &&
