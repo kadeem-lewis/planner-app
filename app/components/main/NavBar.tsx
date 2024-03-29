@@ -21,7 +21,7 @@ import {
   MenuHeader,
   MenuSection,
 } from "~/components/ui/menu";
-import { Button, buttonVariants } from "../button";
+import { Button, buttonVariants } from "../ui/button";
 import {
   DialogTrigger,
   DialogOverlay,

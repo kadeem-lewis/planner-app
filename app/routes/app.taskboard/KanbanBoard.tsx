@@ -1,4 +1,4 @@
-import { Button } from "~/components/button";
+import { Button } from "~/components/ui/button";
 import { Plus } from "lucide-react";
 import ActivityCard from "~/components/main/ActivityCard";
 import { Event } from "~/components/main/CreateEvent";
