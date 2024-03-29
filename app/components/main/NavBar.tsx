@@ -103,7 +103,6 @@ export default function NavBar() {
             </MenuPopover>
           </MenuTrigger>
           <MenuTrigger>
-            {/* TODO: Find a way to either allow clicks without the button or how to style this */}
             <Button variant="ghost" size="icon">
               <Avatar>
                 <AvatarFallback className="uppercase">
@@ -112,10 +111,7 @@ export default function NavBar() {
               </Avatar>
             </Button>
             <MenuPopover>
-              {/* TODO: Find a way to better name the keys to prevent this weird logic */}
-              <Menu
-                onAction={(key) => key === "react-aria-8" && handleLogOut()}
-              >
+              <Menu onAction={(key) => key === "log-out" && handleLogOut()}>
                 <MenuSection>
                   <MenuHeader separator>My Account</MenuHeader>
                 </MenuSection>
@@ -127,7 +123,7 @@ export default function NavBar() {
                 <MenuSeparator />
                 <MenuSection>
                   {/* <MenuItem onSelect={() => handleLogOut()}>Logout</MenuItem> */}
-                  <MenuItem>Logout</MenuItem>
+                  <MenuItem id="log-out">Logout</MenuItem>
                 </MenuSection>
               </Menu>
             </MenuPopover>
