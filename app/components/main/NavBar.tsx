@@ -26,7 +26,7 @@ import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 
 export default function NavBar() {
   const { currentUser, logout } = useAuth();
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -103,26 +103,26 @@ export default function NavBar() {
             </MenuPopover>
           </MenuTrigger>
           <MenuTrigger>
-            <Button>
+            {/* TODO: Find a way to either allow clicks without the button or how to style this */}
+            <Button variant="ghost" size="icon">
               <Avatar>
-                <AvatarFallback>
+                <AvatarFallback className="uppercase">
                   {currentUser?.email?.[0] ?? "NA"}
                 </AvatarFallback>
               </Avatar>
             </Button>
             <MenuPopover>
-              <Menu>
+              {/* TODO: Find a way to better name the keys to prevent this weird logic */}
+              <Menu
+                onAction={(key) => key === "react-aria-8" && handleLogOut()}
+              >
                 <MenuSection>
                   <MenuHeader separator>My Account</MenuHeader>
                 </MenuSection>
                 <MenuSeparator />
                 <MenuSection>
-                  <MenuItem>
-                    <Link to="#">Profile</Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to="#">Settings</Link>
-                  </MenuItem>
+                  <MenuItem href="#">Profile</MenuItem>
+                  <MenuItem href="#">Settings</MenuItem>
                 </MenuSection>
                 <MenuSeparator />
                 <MenuSection>
