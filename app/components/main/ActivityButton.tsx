@@ -17,6 +17,9 @@ export default function ActivityButton() {
     setActivityType(activity);
     setIsOpen(true);
   };
+
+  // ! Activity button is outside of context so it cant add to db currently
+
   return (
     <>
       <DropdownMenu>
