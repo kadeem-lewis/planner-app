@@ -1,12 +1,21 @@
 import React, { Dispatch, useRef, FormEvent } from "react";
-import { useFireStore } from "../../contexts/FirestoreContext";
+import { useFireStore } from "~/contexts/FirestoreContext";
 import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
+
 type  CreateTaskProps ={
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
 }
+
+export type Task = {
+  title: string;
+  description: string;
+  dueDate: string;
+  progress: string;
+};
+
 export default function CreateTask({ setIsOpen }: CreateTaskProps) {
   const { addTask } = useFireStore();
   const titleRef = useRef<HTMLInputElement>(null);

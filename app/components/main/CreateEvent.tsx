@@ -1,11 +1,20 @@
 import React, { Dispatch, useRef, FormEvent } from "react";
-import { useFireStore } from "../../contexts/FirestoreContext";
+import { useFireStore } from "~/contexts/FirestoreContext";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
+
 type CreateEventProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
 }
+
+export type Event = {
+  title: string;
+  startDate: string;
+  endDate: string;
+};
+
+
 export default function CreateEvent({ setIsOpen }: CreateEventProps) {
   const { addEvent } = useFireStore();
   const titleRef = useRef<HTMLInputElement>(null);
