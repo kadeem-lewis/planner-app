@@ -5,6 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useNavigate,
 } from "@remix-run/react";
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import stylesheet from "~/tailwind.css?url";
@@ -15,6 +16,7 @@ import {
   useTheme,
 } from "remix-themes";
 import { themeSessionResolver } from "./sessions.server";
+import { RouterProvider } from "react-aria-components";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -54,9 +56,12 @@ export function App() {
 
 export default function AppWithProviders() {
   const data = useLoaderData<typeof loader>();
+  const navigate = useNavigate();
   return (
     <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
-      <App />
+      <RouterProvider navigate={navigate}>
+        <App />
+      </RouterProvider>
     </ThemeProvider>
   );
 }
