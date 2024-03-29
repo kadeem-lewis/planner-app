@@ -8,6 +8,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+
+import { Menu, MenuHeader, MenuItem, MenuPopover } from "../ui/menu";
+
 import { Dialog, DialogHeader, DialogContent, DialogTitle } from "../ui/dialog";
 
 export default function ActivityButton() {

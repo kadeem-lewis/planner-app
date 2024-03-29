@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   Home,
   Bell,
-  Menu,
+  Menu as MenuIcon,
   Calendar,
   CalendarDays,
   KanbanSquare,
@@ -13,14 +13,15 @@ import { Link, NavLink, useNavigate } from "@remix-run/react";
 import { useAuth } from "~/contexts/AuthContext";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-import { Button, buttonVariants } from "../ui/button";
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuItem,
+  MenuSeparator,
+  MenuHeader,
+  MenuSection,
+} from "~/components/ui/menu";
+import { Button, buttonVariants } from "../button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 
 export default function NavBar() {
@@ -51,7 +52,7 @@ export default function NavBar() {
                 size="icon"
                 className="shrink-0 md:hidden"
               >
-                <Menu />
+                <MenuIcon />
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
@@ -89,41 +90,48 @@ export default function NavBar() {
         </div>
         <div className="flex items-center gap-x-1">
           <ActivityButton />
-          <DropdownMenu>
-            <DropdownMenuTrigger>
-              <Button variant="ghost">
-                <Bell />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem>
-                <NotificationTab />
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <DropdownMenu>
-            <DropdownMenuTrigger>
+          <MenuTrigger>
+            <Button variant="ghost">
+              <Bell />
+            </Button>
+            <MenuPopover>
+              <Menu>
+                <MenuItem>
+                  <NotificationTab />
+                </MenuItem>
+              </Menu>
+            </MenuPopover>
+          </MenuTrigger>
+          <MenuTrigger>
+            <Button>
               <Avatar>
                 <AvatarFallback>
                   {currentUser?.email?.[0] ?? "NA"}
                 </AvatarFallback>
               </Avatar>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <Link to="#">Profile</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link to="#">Settings</Link>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onSelect={() => handleLogOut()}>
-                Logout
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            </Button>
+            <MenuPopover>
+              <Menu>
+                <MenuSection>
+                  <MenuHeader separator>My Account</MenuHeader>
+                </MenuSection>
+                <MenuSeparator />
+                <MenuSection>
+                  <MenuItem>
+                    <Link to="#">Profile</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to="#">Settings</Link>
+                  </MenuItem>
+                </MenuSection>
+                <MenuSeparator />
+                <MenuSection>
+                  {/* <MenuItem onSelect={() => handleLogOut()}>Logout</MenuItem> */}
+                  <MenuItem>Logout</MenuItem>
+                </MenuSection>
+              </Menu>
+            </MenuPopover>
+          </MenuTrigger>
         </div>
       </nav>
     </header>
