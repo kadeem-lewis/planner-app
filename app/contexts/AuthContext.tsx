@@ -36,7 +36,7 @@ export const useAuth = () => {
 };
 export const AuthProvider = ({ children }: Props) => {
   const [currentUser, setCurrentUser] = useState<firebase.UserInfo | null>(
-    null
+    null,
   );
   const [loading, setLoading] = useState(true);
 

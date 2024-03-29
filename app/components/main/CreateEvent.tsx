@@ -6,14 +6,13 @@ import { Input } from "../ui/input";
 
 type CreateEventProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
-}
+};
 
 export type Event = {
   title: string;
   startDate: string;
   endDate: string;
 };
-
 
 export default function CreateEvent({ setIsOpen }: CreateEventProps) {
   const { addEvent } = useFireStore();
@@ -33,7 +32,7 @@ export default function CreateEvent({ setIsOpen }: CreateEventProps) {
         await addEvent(
           titleRef.current.value,
           startDateRef.current.value,
-          endDateRef.current.value
+          endDateRef.current.value,
         );
         setIsOpen(false);
       } catch (err) {

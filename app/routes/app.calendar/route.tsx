@@ -6,7 +6,12 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import ActivityModal from "~/components/main/ActivityModal";
 import { useFireStore } from "~/contexts/FirestoreContext";
 import { EventInput } from "@fullcalendar/core";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "~/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "~/components/ui/dialog";
 
 export default function Calendar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,9 +65,9 @@ export default function Calendar() {
       />
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Add {activityType}</DialogTitle>
-        </DialogHeader>
+          <DialogHeader>
+            <DialogTitle>Add {activityType}</DialogTitle>
+          </DialogHeader>
           <ActivityModal
             setIsOpen={setIsOpen}
             activityType={activityType}

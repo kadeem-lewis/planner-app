@@ -5,9 +5,9 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 
-type  CreateTaskProps ={
+type CreateTaskProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
-}
+};
 
 export type Task = {
   title: string;
@@ -36,7 +36,7 @@ export default function CreateTask({ setIsOpen }: CreateTaskProps) {
           titleRef.current.value,
           descRef.current.value,
           dateRef.current.value,
-          selectRef.current.value
+          selectRef.current.value,
         );
         setIsOpen(false);
       } catch (err) {

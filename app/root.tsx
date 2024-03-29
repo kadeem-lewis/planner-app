@@ -30,10 +30,10 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 export function App() {
   const data = useLoaderData<typeof loader>();
-  const [theme]= useTheme();
+  const [theme] = useTheme();
 
   return (
-    <html lang="en" data-theme={theme ?? ''}>
+    <html lang="en" data-theme={theme ?? ""}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -43,7 +43,7 @@ export function App() {
       </head>
       <body>
         <AuthProvider>
-        <Outlet />
+          <Outlet />
         </AuthProvider>
         <ScrollRestoration />
         <Scripts />
@@ -53,10 +53,10 @@ export function App() {
 }
 
 export default function AppWithProviders() {
-  const data = useLoaderData<typeof loader>()
+  const data = useLoaderData<typeof loader>();
   return (
     <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
       <App />
     </ThemeProvider>
-  )
+  );
 }

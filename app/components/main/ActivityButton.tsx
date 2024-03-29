@@ -8,34 +8,32 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { Dialog, DialogHeader,  DialogContent,
-  DialogTitle, } from "../ui/dialog";
-
+import { Dialog, DialogHeader, DialogContent, DialogTitle } from "../ui/dialog";
 
 export default function ActivityButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [activityType, setActivityType] = useState("");
-  const createActivity = (activity: "event"|"task") => {
+  const createActivity = (activity: "event" | "task") => {
     setActivityType(activity);
     setIsOpen(true);
   };
   return (
     <>
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Button variant="ghost">
-              <Plus />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-              <DropdownMenuItem onSelect={() => createActivity("event")}>
-                Add Event
-              </DropdownMenuItem>
-              <DropdownMenuItem onSelect={() => createActivity("task")}>
-                Add Task
-              </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+      <DropdownMenu>
+        <DropdownMenuTrigger>
+          <Button variant="ghost">
+            <Plus />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem onSelect={() => createActivity("event")}>
+            Add Event
+          </DropdownMenuItem>
+          <DropdownMenuItem onSelect={() => createActivity("task")}>
+            Add Task
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent>
           <DialogHeader>

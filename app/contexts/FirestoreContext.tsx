@@ -47,14 +47,14 @@ interface FirestoreContextType {
     title: string,
     description: string,
     dueDate: string,
-    progress: string
+    progress: string,
   ) => Promise<void>;
   deleteTask?: (id: string) => Promise<void>;
   updateTask?: (id: string, data: Partial<Task>) => Promise<void>;
   addEvent?: (
     title: string,
     startDate: string,
-    endDate: string
+    endDate: string,
   ) => Promise<void>;
   updateEvent?: (id: string, data: Partial<Event>) => Promise<void>;
   deleteEvent?: (id: string) => Promise<void>;
@@ -76,7 +76,7 @@ export const FirestoreProvider = ({ children }: Props) => {
     title: string,
     description: string,
     dueDate: string,
-    progress: string
+    progress: string,
   ) => {
     const userId = currentUser?.uid;
     if (userId) {
@@ -94,7 +94,7 @@ export const FirestoreProvider = ({ children }: Props) => {
   const addEvent = async (
     title: string,
     startDate: string,
-    endDate: string
+    endDate: string,
   ) => {
     const userId = currentUser?.uid;
     if (userId) {
@@ -126,7 +126,7 @@ export const FirestoreProvider = ({ children }: Props) => {
       ? onSnapshot(
           query(
             collection(db, "tasks"),
-            where("userId", "==", currentUser.uid)
+            where("userId", "==", currentUser.uid),
           ),
           (snapshot) => {
             const tasksData: Task[] = [];
@@ -135,7 +135,7 @@ export const FirestoreProvider = ({ children }: Props) => {
             });
             setTasks(tasksData);
             setLoading(false);
-          }
+          },
         )
       : () => {};
 
@@ -143,7 +143,7 @@ export const FirestoreProvider = ({ children }: Props) => {
       ? onSnapshot(
           query(
             collection(db, "events"),
-            where("userId", "==", currentUser.uid)
+            where("userId", "==", currentUser.uid),
           ),
           (snapshot) => {
             const eventsData: Event[] = [];
@@ -152,7 +152,7 @@ export const FirestoreProvider = ({ children }: Props) => {
             });
             setEvents(eventsData);
             setLoading(false);
-          }
+          },
         )
       : () => {};
 

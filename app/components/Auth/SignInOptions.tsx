@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { Icons } from "../Icons";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "@remix-run/react";
@@ -38,15 +38,15 @@ export default function SignInOptions() {
       <Button
         onClick={() => handleGoogleSignUp()}
         variant="default"
-        className="w-full uppercase font-semibold text-muted"
+        className="w-full font-semibold uppercase text-muted"
         disabled={loading}
       >
         <Icons.google className="mr-4 size-4" />
         Sign in with Google
       </Button>
       <Button
-      variant="default"
-        className="w-full uppercase font-semibold text-muted"
+        variant="default"
+        className="w-full font-semibold uppercase text-muted"
         onClick={() => handleAnonymousSignUp()}
         disabled={loading}
       >
