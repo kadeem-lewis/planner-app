@@ -1,9 +1,18 @@
-import React, { Dispatch, useRef, FormEvent } from "react";
+import React, { Dispatch, useRef, FormEvent, useState } from "react";
 import { useFireStore } from "~/contexts/FirestoreContext";
 import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectValue,
+  SelectTrigger,
+  SelectItem,
+  SelectPopover,
+} from "../ui/select";
+import { Key } from "react-aria-components";
 
 type CreateTaskProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
@@ -21,22 +30,18 @@ export default function CreateTask({ setIsOpen }: CreateTaskProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const descRef = useRef<HTMLTextAreaElement>(null);
   const dateRef = useRef<HTMLInputElement>(null);
-  const selectRef = useRef<HTMLSelectElement>(null);
+  const [progress, setProgress] = useState<Key>("Not Started");
+
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (
-      titleRef.current &&
-      descRef.current &&
-      dateRef.current &&
-      selectRef.current &&
-      addTask
-    ) {
+    console.log(progress);
+    if (titleRef.current && descRef.current && dateRef.current && addTask) {
       try {
         await addTask(
           titleRef.current.value,
           descRef.current.value,
           dateRef.current.value,
-          selectRef.current.value,
+          progress as string,
         );
         setIsOpen(false);
       } catch (err) {
@@ -57,11 +62,29 @@ export default function CreateTask({ setIsOpen }: CreateTaskProps) {
       />
       <Label htmlFor="due-date">Due Date:</Label>
       <Input type="date" name="due-date" ref={dateRef} className="input" />
-      <select name="progress" ref={selectRef} defaultValue="Not Started">
-        <option value="Not Started">Not Started</option>
-        <option value="In Progress">In Progress</option>
-        <option value="Completed">Completed</option>
-      </select>
+      <Select
+        name="progress"
+        aria-label="task progress"
+        selectedKey={progress}
+        onSelectionChange={(selected) => setProgress(selected)}
+      >
+        <SelectTrigger>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectPopover>
+          <SelectContent>
+            <SelectItem id="Not Started" textValue="Not Started">
+              Not Started
+            </SelectItem>
+            <SelectItem id="In Progress" textValue="In Progress">
+              In Progress
+            </SelectItem>
+            <SelectItem id="Completed" textValue="Completed">
+              Completed
+            </SelectItem>
+          </SelectContent>
+        </SelectPopover>
+      </Select>
       <Button type="submit" variant="default" className="w-full">
         Submit
       </Button>
