@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useAuth } from "~/contexts/AuthContext";
 import SignInOptions from "~/components/Auth/SignInOptions";
-import { Link, useNavigate } from "@remix-run/react";
+import { useNavigate } from "@remix-run/react";
+import { Link } from "~/components/ui/link";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { z } from "zod";
@@ -32,7 +33,7 @@ const formSchema = z.object({
 type SignupSchema = z.infer<typeof formSchema>;
 
 export default function SignUp() {
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const { signup } = useAuth();
   const navigate = useNavigate();
 
@@ -99,18 +100,22 @@ export default function SignUp() {
                       <Input {...field} placeholder="********" />
                     </FormControl>
                     <FormMessage />
-                    <Link to="/auth/password">Forgot Password?</Link>
+                    <Link href="/auth/password" variant="link">
+                      Forgot Password?
+                    </Link>
                   </FormItem>
                 )}
               />
-              <Button type="submit">Submit</Button>
+              <Button type="submit" className="w-full">
+                Submit
+              </Button>
             </form>
           </Form>
         </CardContent>
         <CardFooter>
           <p>
             Already have an account?{" "}
-            <Link to="/auth/login" className="link">
+            <Link href="/auth/login" variant="link">
               Log in
             </Link>
           </p>

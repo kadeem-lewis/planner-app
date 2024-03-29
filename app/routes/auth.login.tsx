@@ -1,4 +1,5 @@
-import { useNavigate, Link } from "@remix-run/react";
+import { useNavigate } from "@remix-run/react";
+import { Link } from "~/components/ui/link";
 import { useAuth } from "~/contexts/AuthContext";
 import SignInOptions from "~/components/Auth/SignInOptions";
 import {
@@ -96,18 +97,22 @@ export default function LogIn() {
                       <Input {...field} placeholder="********" />
                     </FormControl>
                     <FormMessage />
-                    <Link to="/auth/password">Forgot Password?</Link>
+                    <Link href="/auth/password" variant="link">
+                      Forgot Password?
+                    </Link>
                   </FormItem>
                 )}
               />
-              <Button type="submit">Submit</Button>
+              <Button type="submit" className="w-full">
+                Submit
+              </Button>
             </form>
           </Form>
         </CardContent>
         <CardFooter>
           <p>
             Don&apos;t have an account yet?{" "}
-            <Link to="/auth/signup" className="link">
+            <Link href="/auth/signup" variant="link">
               Sign up
             </Link>
           </p>

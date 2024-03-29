@@ -1,25 +1,24 @@
-import { Link } from "@remix-run/react";
-import { Button } from "../ui/button";
+import { Link } from "~/components/ui/link";
 export default function NavBar() {
   return (
     <header>
       <nav className="flex h-14 items-center justify-between border-b bg-muted/40">
-        <Link to="/" className="px-4 text-xl font-semibold">
+        <Link href="/" variant="link" className="px-4 text-xl font-semibold">
           Taskbored
         </Link>
         <div>
-          <Button
+          <Link
+            href="/auth/signup"
             className="mr-4 rounded-lg px-3 py-2 text-white hover:brightness-110"
-            asChild
           >
-            <Link to="/auth/signup">Signup</Link>
-          </Button>
-          <Button
+            Signup
+          </Link>
+          <Link
+            href="/auth/login"
             className="rounded-lg bg-primary px-3 py-2 font-semibold text-white hover:brightness-110"
-            asChild
           >
-            <Link to="/auth/login">Start for free</Link>
-          </Button>
+            Start for free
+          </Link>
         </div>
       </nav>
     </header>

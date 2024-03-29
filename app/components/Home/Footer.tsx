@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Link } from "../ui/link";
 
 export default function Footer() {
   return (
@@ -8,7 +8,9 @@ export default function Footer() {
           <h5>Products</h5>
           <ul>
             <li>
-              <Link to="">Get Started</Link>
+              <Link variant="link" href="#">
+                Get Started
+              </Link>
             </li>
           </ul>
         </section>
@@ -16,7 +18,7 @@ export default function Footer() {
           <h5>About</h5>
           <ul>
             <li>
-              <Link to="#"></Link>
+              <Link href="#" variant="link"></Link>
             </li>
           </ul>
         </section>
@@ -24,13 +26,19 @@ export default function Footer() {
           <h5>Legal</h5>
           <ul>
             <li>
-              <Link to="">Privacy</Link>
+              <Link href="#" variant="link">
+                Privacy
+              </Link>
             </li>
             <li>
-              <Link to="">ToS</Link>
+              <Link href="#" variant="link">
+                ToS
+              </Link>
             </li>
             <li>
-              <Link to="">License</Link>
+              <Link href="#" variant="link">
+                License
+              </Link>
             </li>
           </ul>
         </section>
