@@ -12,7 +12,6 @@ import {
   updateDoc,
   deleteDoc,
   doc,
-  Timestamp,
   onSnapshot,
   query,
   where,
@@ -26,7 +25,7 @@ interface Task {
   id: string;
   title: string;
   description: string;
-  dueDate: Timestamp;
+  dueDate: string;
   progress: string;
   completed: boolean;
   deleted: boolean;
