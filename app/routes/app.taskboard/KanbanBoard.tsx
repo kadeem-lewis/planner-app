@@ -1,12 +1,9 @@
 import { Button } from "~/components/ui/button";
 import { Plus } from "lucide-react";
 import ActivityCard from "~/components/main/ActivityCard";
-import { Event } from "~/components/main/CreateEvent";
 import CreateTask, { Task } from "~/components/main/CreateTask";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 import { Input } from "~/components/ui/input";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   DialogTrigger,
   DialogContent,
@@ -14,58 +11,35 @@ import {
   DialogTitle,
   DialogOverlay,
 } from "~/components/ui/dialog";
+import { GridList, GridListItem } from "~/components/ui/grid-list";
+import { useDragAndDrop } from "react-aria-components";
 
 type KanbanBoardProps = {
   name: string;
-  activities: Event[] | Task[];
+  activities: Task[];
+  setActivities: React.Dispatch<React.SetStateAction<Task[]>>;
   updateBoardName: (oldName: string, newName: string) => void;
 };
 
 export default function KanbanBoard({ name, activities }: KanbanBoardProps) {
-  const {
-    setNodeRef,
-    attributes,
-    listeners,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({
-    id: name,
-    data: {
-      type: "board",
-      name,
-    },
-  });
   const [editable, setEditable] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const style = {
-    transition,
-    transform: CSS.Transform.toString(transform),
-  };
-
-  if (isDragging) {
-    return (
-      <div
-        ref={setNodeRef}
-        style={style}
-        className="flex w-full flex-col border-2 opacity-40"
-      />
-    );
-  }
+  const { dragAndDropHooks } = useDragAndDrop({
+    getItems(keys) {},
+    getDropOperation: () => "move",
+    async onInsert(e) {},
+    async onRootDrop(e) {},
+    onDragEnd(e) {
+      if (e.dropOperation === "move") {
+        //use setActivities to remove
+      }
+    },
+  });
 
   return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      className="flex h-fit w-full flex-col justify-between rounded-lg bg-muted px-4 py-6"
-    >
-      <div
-        className="text-xl font-bold"
-        {...attributes}
-        {...listeners}
-        onClick={() => setEditable(true)}
-      >
+    <div className="flex h-fit w-full flex-col justify-between rounded-lg bg-muted px-4 py-6">
+      <div className="text-xl font-bold" onClick={() => setEditable(true)}>
         {!editable ? (
           name
         ) : (
@@ -80,11 +54,20 @@ export default function KanbanBoard({ name, activities }: KanbanBoardProps) {
           />
         )}
       </div>
-      <div className="my-4 flex flex-col gap-3">
-        {activities.map((activity) => {
-          return <ActivityCard key={activity.title} activity={activity} />;
-        })}
-      </div>
+      <GridList
+        items={activities}
+        aria-label={`${name} Kanban Board`}
+        className="my-4 flex flex-col gap-3"
+        dragAndDropHooks={dragAndDropHooks}
+      >
+        {(item) => {
+          return (
+            <GridListItem textValue={item.title}>
+              <ActivityCard activity={item} />
+            </GridListItem>
+          );
+        }}
+      </GridList>
       <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
         <Button variant="default" className="flex gap-2 justify-self-end">
           <Plus />
