@@ -11,7 +11,7 @@ Currently it is using git, vite, React, Typescript, TailwindCSS and Firebase.
 
 ### Version 1 Release
 
-- [ ] Switch site to nextjs
+- [x] Switch site to ~~nextjs~~remix.run
 - [ ] Create kanban board
 - [ ] Create list view
 - [ ] Sync events between views
