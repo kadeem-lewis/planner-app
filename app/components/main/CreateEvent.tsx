@@ -1,12 +1,20 @@
 import React, { Dispatch, useRef, FormEvent } from "react";
-import { useFireStore } from "../../contexts/FirestoreContext";
+import { useFireStore } from "~/contexts/FirestoreContext";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-interface Props {
+
+type CreateEventProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
-}
-export default function CreateEvent({ setIsOpen }: Props) {
+};
+
+export type Event = {
+  title: string;
+  startDate: string;
+  endDate: string;
+};
+
+export default function CreateEvent({ setIsOpen }: CreateEventProps) {
   const { addEvent } = useFireStore();
   const titleRef = useRef<HTMLInputElement>(null);
   const startDateRef = useRef<HTMLInputElement>(null);
@@ -24,7 +32,7 @@ export default function CreateEvent({ setIsOpen }: Props) {
         await addEvent(
           titleRef.current.value,
           startDateRef.current.value,
-          endDateRef.current.value
+          endDateRef.current.value,
         );
         setIsOpen(false);
       } catch (err) {
@@ -33,7 +41,7 @@ export default function CreateEvent({ setIsOpen }: Props) {
     }
   };
   return (
-    <form onSubmit={(e) => handleFormSubmit(e)} className="form-control">
+    <form onSubmit={(e) => handleFormSubmit(e)}>
       <Label htmlFor="title" className="label">
         Title:
       </Label>
@@ -41,12 +49,14 @@ export default function CreateEvent({ setIsOpen }: Props) {
       <Label htmlFor="start-time" className="label">
         Start
       </Label>
-      <input type="datetime-local" name="start-time" ref={startDateRef} />
+      <Input type="datetime-local" name="start-time" ref={startDateRef} />
       <Label htmlFor="end-time" className="label">
         End
       </Label>
-      <input type="datetime-local" name="end-time" ref={endDateRef} />
-      <Button type="submit" variant="default" />
+      <Input type="datetime-local" name="end-time" ref={endDateRef} />
+      <Button type="submit" variant="default" className="w-full">
+        Submit
+      </Button>
     </form>
   );
 }

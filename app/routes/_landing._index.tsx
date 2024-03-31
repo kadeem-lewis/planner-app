@@ -1,5 +1,4 @@
-import { Link } from "@remix-run/react";
-import { Button } from "~/components/ui/button";
+import { Link } from "~/components/ui/link";
 const APP_FEATURES = [
   {
     heading: "Effortless Planning",
@@ -37,9 +36,13 @@ export default function LandingPage() {
           Discover the ultimate planner app designed to simplify organization
           and enhance productivity.
         </h2>
-        <Button className=" rounded-lg bg-blue-500 px-3 py-2 font-semibold text-white hover:bg-blue-600">
-          <Link to="/auth/signup">Start for free</Link>
-        </Button>
+
+        <Link
+          href="/auth/signup"
+          className=" rounded-lg bg-blue-500 px-3 py-2 font-semibold text-white hover:bg-blue-600"
+        >
+          Start for free
+        </Link>
         {/* Some sort of image */}
       </section>
       <div id="features">
@@ -57,9 +60,13 @@ export default function LandingPage() {
         <h3 className=" text-2xl font-semibold">
           Ready to take control of your time?
         </h3>
-        <Button className="rounded-lg bg-blue-500 px-3 py-2 font-semibold text-white hover:bg-blue-600">
-          <Link to="/auth/signup">Start for free</Link>
-        </Button>
+
+        <Link
+          href="/auth/signup"
+          className="rounded-lg bg-blue-500 px-3 py-2 font-semibold text-white hover:bg-blue-600"
+        >
+          Start for free
+        </Link>
       </section>
     </div>
   );

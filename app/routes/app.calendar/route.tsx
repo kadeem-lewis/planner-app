@@ -6,10 +6,17 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import ActivityModal from "~/components/main/ActivityModal";
 import { useFireStore } from "~/contexts/FirestoreContext";
 import { EventInput } from "@fullcalendar/core";
+import {
+  DialogTrigger,
+  DialogOverlay,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "~/components/ui/dialog";
 
 export default function Calendar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activityType, setActivityType] = useState("event");
+  const [activityType] = useState("event");
   const { events, tasks } = useFireStore();
   const [activities, setActivities] = useState<EventInput>([]);
 
@@ -57,12 +64,19 @@ export default function Calendar() {
         selectable
         select={() => setIsOpen(true)}
       />
-      {isOpen && (
-        <ActivityModal
-          setIsOpen={setIsOpen}
-          activityType={activityType}
-        ></ActivityModal>
-      )}
+      <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
+        <DialogOverlay>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Add {activityType}</DialogTitle>
+            </DialogHeader>
+            <ActivityModal
+              setIsOpen={setIsOpen}
+              activityType={activityType}
+            ></ActivityModal>
+          </DialogContent>
+        </DialogOverlay>
+      </DialogTrigger>
     </div>
   );
 }
