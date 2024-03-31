@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from "@remix-run/react";
 import NavBar from "~/components/main/NavBar";
 import SideBar from "~/components/main/SideBar";
 import { FirestoreProvider } from "~/contexts/FirestoreContext";
