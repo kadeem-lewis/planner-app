@@ -1,3 +1,4 @@
+import { captureRemixErrorBoundaryError } from "@sentry/remix";
 import {
   Links,
   Meta,
@@ -6,6 +7,7 @@ import {
   ScrollRestoration,
   useLoaderData,
   useNavigate,
+  useRouteError,
 } from "@remix-run/react";
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import stylesheet from "~/tailwind.css?url";
@@ -53,6 +55,12 @@ export function App() {
     </html>
   );
 }
+
+export const ErrorBoundary = () => {
+  const error = useRouteError();
+  captureRemixErrorBoundaryError(error);
+  return <div>Something went wrong</div>;
+};
 
 export default function AppWithProviders() {
   const data = useLoaderData<typeof loader>();

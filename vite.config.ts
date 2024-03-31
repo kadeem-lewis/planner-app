@@ -1,3 +1,4 @@
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { vitePlugin as remix } from "@remix-run/dev";
 import { installGlobals } from "@remix-run/node";
 import { defineConfig } from "vite";
@@ -12,16 +13,20 @@ installGlobals();
 const { RemixVitePWAPlugin, RemixPWAPreset } = RemixVitePWA();
 
 export default defineConfig({
-  plugins: [
-    remix({
-      presets: [RemixPWAPreset()],
-    }),
-    tsconfigPaths(),
-    RemixVitePWAPlugin({}),
-  ],
+  plugins: [remix({
+    presets: [RemixPWAPreset()],
+  }), tsconfigPaths(), RemixVitePWAPlugin({}), sentryVitePlugin({
+    org: "kadeem-lewis",
+    project: "taskbored"
+  })],
+
   css: {
     postcss: {
       plugins: [tailwind(), autoprefixer()],
     },
   },
+
+  build: {
+    sourcemap: true
+  }
 });
