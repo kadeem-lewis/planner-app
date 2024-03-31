@@ -30,6 +30,7 @@
     "@fullcalendar/timegrid": "^6.1.11",
     "@hookform/resolvers": "^3.3.4",
     "@internationalized/date": "^3.5.2",
+    "@netlify/remix-adapter": "^2.3.0",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
