@@ -1,13 +1,12 @@
-import { CalendarClock, Calendar, LayoutList } from "lucide-react";
+import { CalendarClock, LayoutList } from "lucide-react";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-  CardFooter,
 } from "../ui/card";
-import { format, isSameDay } from "date-fns";
+import { format } from "date-fns";
 
 type ActivityCardProps = {
   activity: Record<string, string>;
