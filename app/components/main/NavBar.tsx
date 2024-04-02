@@ -11,7 +11,7 @@ import ActivityButton from "./ActivityButton";
 import NotificationTab from "./NotificationTab";
 import { Link, NavLink, useNavigate } from "@remix-run/react";
 import { useAuth } from "~/contexts/AuthContext";
-import { Avatar, AvatarFallback } from "../ui/avatar";
+import { Avatar, AvatarFallback } from "~/components/ui/avatar";
 import {
   Menu,
   MenuTrigger,
@@ -21,7 +21,7 @@ import {
   MenuHeader,
   MenuSection,
 } from "~/components/ui/menu";
-import { Button, buttonVariants } from "../ui/button";
+import { Button, buttonVariants } from "~/components/ui/button";
 import {
   DialogTrigger,
   DialogOverlay,

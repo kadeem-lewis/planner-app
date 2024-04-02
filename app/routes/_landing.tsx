@@ -1,5 +1,5 @@
-import NavBar from "~/components/Home/NavBar";
-import Footer from "~/components/Home/Footer";
+import NavBar from "~/components/home/NavBar";
+import Footer from "~/components/home/Footer";
 import { Outlet } from "@remix-run/react";
 
 export const meta = () => {

@@ -1,7 +1,7 @@
 import { useNavigate } from "@remix-run/react";
 import { Link } from "~/components/ui/link";
 import { useAuth } from "~/contexts/AuthContext";
-import SignInOptions from "~/components/Auth/SignInOptions";
+import SignInOptions from "~/components/auth/SignInOptions";
 import {
   Card,
   CardContent,

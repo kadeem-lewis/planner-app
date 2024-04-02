@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "~/contexts/AuthContext";
-import SignInOptions from "~/components/Auth/SignInOptions";
+import SignInOptions from "~/components/auth/SignInOptions";
 import { useNavigate } from "@remix-run/react";
 import { Link } from "~/components/ui/link";
 import { Button } from "~/components/ui/button";

@@ -1,6 +1,6 @@
 import { useActionData, useSubmit, useNavigation } from "@remix-run/react";
 import { Link } from "~/components/ui/link";
-import SignInOptions from "~/components/Auth/SignInOptions";
+import SignInOptions from "~/components/auth/SignInOptions";
 import {
   Card,
   CardContent,

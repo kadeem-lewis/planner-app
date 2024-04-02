@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-} from "../ui/card";
+} from "~/components/ui/card";
 import { format } from "date-fns";
 
 type ActivityCardProps = {
