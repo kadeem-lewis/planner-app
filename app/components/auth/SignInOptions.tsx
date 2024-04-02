@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Icons } from "../Icons";
+import { Icons } from "~/components/Icons";
 import { useAuth } from "~/contexts/AuthContext";
 import { useNavigate } from "@remix-run/react";
-import { Button } from "../ui/button";
+import { Button } from "~/components/ui/button";
 
 export default function SignInOptions() {
   const [loading, setLoading] = useState(false);
