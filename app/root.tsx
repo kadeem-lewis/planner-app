@@ -20,6 +20,7 @@ import { themeSessionResolver } from "./sessions.server";
 import { RouterProvider } from "react-aria-components";
 import { rootAuthLoader } from "@clerk/remix/ssr.server";
 import { ClerkApp, ClerkErrorBoundary } from "@clerk/remix";
+import { dark } from "@clerk/themes";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -75,4 +76,8 @@ function AppWithProviders() {
   );
 }
 
-export default ClerkApp(AppWithProviders);
+export default ClerkApp(AppWithProviders, {
+  appearance: {
+    baseTheme: dark,
+  },
+});
