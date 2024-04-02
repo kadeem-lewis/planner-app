@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Home,
   Bell,
@@ -9,42 +8,17 @@ import {
 } from "lucide-react";
 import ActivityButton from "./ActivityButton";
 import NotificationTab from "./NotificationTab";
-import { Link, NavLink, useNavigate } from "@remix-run/react";
-import { useAuth } from "~/contexts/AuthContext";
-import { Avatar, AvatarFallback } from "~/components/ui/avatar";
-import {
-  Menu,
-  MenuTrigger,
-  MenuPopover,
-  MenuItem,
-  MenuSeparator,
-  MenuHeader,
-  MenuSection,
-} from "~/components/ui/menu";
+import { Link, NavLink } from "@remix-run/react";
+import { Menu, MenuTrigger, MenuPopover, MenuItem } from "~/components/ui/menu";
 import { Button, buttonVariants } from "~/components/ui/button";
 import {
   DialogTrigger,
   DialogOverlay,
   DialogContent,
 } from "~/components/ui/dialog";
+import { UserButton } from "@clerk/remix";
 
 export default function NavBar() {
-  const { currentUser, logout } = useAuth();
-  const [, setError] = useState("");
-  const navigate = useNavigate();
-
-  const handleLogOut = async () => {
-    setError("");
-    if (logout) {
-      try {
-        await logout();
-        navigate("/auth/login");
-      } catch (err) {
-        setError("failed to log out");
-      }
-    }
-  };
-
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:px-6">
       <nav className="flex w-full items-center justify-between">
@@ -106,32 +80,7 @@ export default function NavBar() {
               </Menu>
             </MenuPopover>
           </MenuTrigger>
-          <MenuTrigger>
-            <Button variant="ghost" size="icon">
-              <Avatar>
-                <AvatarFallback className="uppercase">
-                  {currentUser?.email?.[0] ?? "NA"}
-                </AvatarFallback>
-              </Avatar>
-            </Button>
-            <MenuPopover>
-              <Menu onAction={(key) => key === "log-out" && handleLogOut()}>
-                <MenuSection>
-                  <MenuHeader separator>My Account</MenuHeader>
-                </MenuSection>
-                <MenuSeparator />
-                <MenuSection>
-                  <MenuItem href="#">Profile</MenuItem>
-                  <MenuItem href="#">Settings</MenuItem>
-                </MenuSection>
-                <MenuSeparator />
-                <MenuSection>
-                  {/* <MenuItem onSelect={() => handleLogOut()}>Logout</MenuItem> */}
-                  <MenuItem id="log-out">Logout</MenuItem>
-                </MenuSection>
-              </Menu>
-            </MenuPopover>
-          </MenuTrigger>
+          <UserButton afterSignOutUrl="/" />
         </div>
       </nav>
     </header>
