@@ -11,7 +11,6 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import stylesheet from "~/tailwind.css?url";
-import { AuthProvider } from "./contexts/AuthContext";
 import {
   PreventFlashOnWrongTheme,
   ThemeProvider,
@@ -41,7 +40,7 @@ function App() {
   const [theme] = useTheme();
 
   return (
-    <html lang="en" data-theme={theme ?? ""}>
+    <html lang="en" className={theme ?? ""}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -50,9 +49,7 @@ function App() {
         <Links />
       </head>
       <body>
-        <AuthProvider>
-          <Outlet />
-        </AuthProvider>
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
       </body>
