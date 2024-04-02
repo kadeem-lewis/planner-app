@@ -20,6 +20,7 @@ export function handleError(error: unknown, { request }: { request: Request }) {
 Sentry.init({
   dsn: "https://cd25ba1dfe7f3f9915df0b9405b3ce2f@o4506349855244288.ingest.us.sentry.io/4507005005266944",
   tracesSampleRate: 1,
+  enabled: process.env.NODE_ENV !== "development",
 });
 
 const ABORT_DELAY = 5_000;
