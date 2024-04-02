@@ -14,7 +14,8 @@
     "typecheck": "tsc",
     "db:generate": "drizzle-kit generate:pg",
     "db:push": "drizzle-kit push:pg",
-    "db:drop": "drizzle-kit drop --config=drizzle.config.ts"
+    "db:drop": "drizzle-kit drop --config=drizzle.config.ts",
+    "db:studio": "drizzle-kit studio"
   },
   "repository": {
     "type": "git",
@@ -49,6 +50,7 @@
     "firebase": "^9.23.0",
     "isbot": "^4.4.0",
     "lucide-react": "^0.363.0",
+    "pg": "^8.11.4",
     "postgres": "^3.4.4",
     "react": "^18.2.0",
     "react-aria-components": "^1.1.1",
