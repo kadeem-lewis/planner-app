@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import ActivityModal from "./ActivityModal";
-import { Button } from "../ui/button";
+import { Button } from "~/components/ui/button";
 
 import { Menu, MenuItem, MenuPopover, MenuTrigger } from "../ui/menu";
 import { Key } from "react-aria-components";

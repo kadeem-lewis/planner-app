@@ -1,5 +1,5 @@
 import { Theme, useTheme } from "remix-themes";
-import { Switch } from "./ui/switch";
+import { Switch } from "~/components/ui/switch";
 import { useState, useEffect } from "react";
 
 export function ThemeToggle() {

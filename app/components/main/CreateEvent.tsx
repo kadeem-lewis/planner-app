@@ -1,8 +1,8 @@
 import React, { Dispatch, useRef, FormEvent } from "react";
 import { useFireStore } from "~/contexts/FirestoreContext";
-import { Button } from "../ui/button";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
+import { Button } from "~/components/ui/button";
+import { Label } from "~/components/ui/label";
+import { Input } from "~/components/ui/input";
 
 type CreateEventProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;

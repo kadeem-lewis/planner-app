@@ -16,7 +16,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "@clerk/remix";
 interface Props {
   children: ReactNode;
 }
@@ -69,7 +69,7 @@ export const FirestoreProvider = ({ children }: Props) => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
-  const { currentUser } = useAuth();
+  const { userId } = useAuth();
 
   const addTask = async (
     title: string,
@@ -77,7 +77,6 @@ export const FirestoreProvider = ({ children }: Props) => {
     dueDate: string,
     progress: string,
   ) => {
-    const userId = currentUser?.uid;
     if (userId) {
       await addDoc(collection(db, "tasks"), {
         title,
@@ -95,7 +94,6 @@ export const FirestoreProvider = ({ children }: Props) => {
     startDate: string,
     endDate: string,
   ) => {
-    const userId = currentUser?.uid;
     if (userId) {
       await addDoc(collection(db, "events"), {
         title,
@@ -121,12 +119,9 @@ export const FirestoreProvider = ({ children }: Props) => {
   };
 
   useEffect(() => {
-    const unsubscribeTasks = currentUser
+    const unsubscribeTasks = userId
       ? onSnapshot(
-          query(
-            collection(db, "tasks"),
-            where("userId", "==", currentUser.uid),
-          ),
+          query(collection(db, "tasks"), where("userId", "==", userId)),
           (snapshot) => {
             const tasksData: Task[] = [];
             snapshot.forEach((doc) => {
@@ -138,12 +133,9 @@ export const FirestoreProvider = ({ children }: Props) => {
         )
       : () => {};
 
-    const unsubscribeEvents = currentUser
+    const unsubscribeEvents = userId
       ? onSnapshot(
-          query(
-            collection(db, "events"),
-            where("userId", "==", currentUser.uid),
-          ),
+          query(collection(db, "events"), where("userId", "==", userId)),
           (snapshot) => {
             const eventsData: Event[] = [];
             snapshot.forEach((doc) => {
@@ -159,7 +151,7 @@ export const FirestoreProvider = ({ children }: Props) => {
       unsubscribeTasks();
       unsubscribeEvents();
     };
-  }, [currentUser]);
+  }, [userId]);
 
   const value: FirestoreContextType = {
     tasks,

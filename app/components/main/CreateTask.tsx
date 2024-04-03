@@ -1,9 +1,9 @@
 import React, { Dispatch, useRef, FormEvent, useState } from "react";
 import { useFireStore } from "~/contexts/FirestoreContext";
-import { Textarea } from "../ui/textarea";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
-import { Button } from "../ui/button";
+import { Textarea } from "~/components/ui/textarea";
+import { Input } from "~/components/ui/input";
+import { Label } from "~/components/ui/label";
+import { Button } from "~/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -11,9 +11,9 @@ import {
   SelectTrigger,
   SelectItem,
   SelectPopover,
-} from "../ui/select";
+} from "~/components/ui/select";
 import { DateValue, Key } from "react-aria-components";
-import MyDatePicker from "../MyDatePicker";
+import MyDatePicker from "~/components/MyDatePicker";
 
 type CreateTaskProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;

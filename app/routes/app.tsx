@@ -1,7 +1,9 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from "@remix-run/react";
 import NavBar from "~/components/main/NavBar";
 import SideBar from "~/components/main/SideBar";
 import { FirestoreProvider } from "~/contexts/FirestoreContext";
+import { getAuth } from "@clerk/remix/ssr.server";
+import { LoaderFunction, redirect } from "@remix-run/node";
 
 export const meta = () => {
   return [
@@ -10,6 +12,14 @@ export const meta = () => {
     },
     { description: "Planner App for all your needs" },
   ];
+};
+
+export const loader: LoaderFunction = async (args) => {
+  const { userId } = await getAuth(args);
+  if (!userId) {
+    return redirect("/auth/signin");
+  }
+  return {};
 };
 
 export default function AppLayout() {

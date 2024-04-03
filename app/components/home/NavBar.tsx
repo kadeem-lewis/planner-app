@@ -14,10 +14,10 @@ export default function NavBar() {
             Signup
           </Link>
           <Link
-            href="/auth/login"
+            href="/auth/signin"
             className="rounded-lg bg-primary px-3 py-2 font-semibold text-white hover:brightness-110"
           >
-            Start for free
+            Sign In
           </Link>
         </div>
       </nav>
