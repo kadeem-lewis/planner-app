@@ -18,3 +18,12 @@ export const tasks = pgTable("tasks", {
   user_id: text("user_id"),
   created_at: timestamp("created_at").defaultNow(),
 });
+
+export const events = pgTable("events", {
+  id: serial("id").primaryKey(),
+  title: text("title"),
+  start_date: timestamp("start_date"),
+  end_date: timestamp("end_date"),
+  created_at: timestamp("created_at").defaultNow(),
+  user_id: text("user_id"),
+});
