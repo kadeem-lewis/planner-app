@@ -78,7 +78,7 @@ export default function KanbanBoard({ name, activities }: KanbanBoardProps) {
             <DialogHeader>
               <DialogTitle>Add Task</DialogTitle>
             </DialogHeader>
-            <CreateTask setIsOpen={setIsOpen} />
+            <CreateTask setIsOpen={setIsOpen} initialProgress={name} />
           </DialogContent>
         </DialogOverlay>
       </DialogTrigger>
