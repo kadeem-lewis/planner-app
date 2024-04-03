@@ -7,9 +7,10 @@ import {
   CardDescription,
 } from "~/components/ui/card";
 import { format } from "date-fns";
+import type { Task } from "./CreateTask";
 
 type ActivityCardProps = {
-  activity: Record<string, string>;
+  activity: Task;
 };
 
 export default function ActivityCard({ activity }: ActivityCardProps) {
