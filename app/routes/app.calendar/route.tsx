@@ -4,7 +4,6 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import ActivityModal from "~/components/main/ActivityModal";
-import { useFireStore } from "~/contexts/FirestoreContext";
 import { EventInput } from "@fullcalendar/core";
 import {
   DialogTrigger,
@@ -13,14 +12,33 @@ import {
   DialogHeader,
   DialogTitle,
 } from "~/components/ui/dialog";
+import { LoaderFunctionArgs, json } from "@remix-run/node";
+import { getAuth } from "@clerk/remix/ssr.server";
+import { eq } from "drizzle-orm";
+import { db } from "~/drizzle/config.server";
+import { events, tasks } from "~/drizzle/schema.server";
+import { useLoaderData } from "@remix-run/react";
+
+export async function loader(args: LoaderFunctionArgs) {
+  const { userId } = await getAuth(args);
+  const eventData = await db
+    .select()
+    .from(events)
+    .where(eq(events.user_id, userId!));
+
+  const taskData = await db
+    .select()
+    .from(tasks)
+    .where(eq(tasks.user_id, userId!));
+
+  return json({ events: eventData, tasks: taskData });
+}
 
 export default function Calendar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activityType] = useState("event");
-  const { events, tasks } = useFireStore();
+  const { tasks, events } = useLoaderData<typeof loader>();
   const [activities, setActivities] = useState<EventInput>([]);
-
-  console.log(activities);
 
   const filterActivities = useCallback(() => {
     const filteredEvents = events
@@ -28,8 +46,8 @@ export default function Calendar() {
           return {
             id: event.id,
             title: event.title,
-            start: event.startDate,
-            end: event.endDate,
+            start: event.start_date && new Date(event.start_date),
+            end: event.end_date && new Date(event.end_date),
           };
         })
       : [];
@@ -38,7 +56,7 @@ export default function Calendar() {
           return {
             id: task.id,
             title: task.title,
-            start: task.dueDate,
+            start: task.due_date,
             allDay: true,
           };
         })
