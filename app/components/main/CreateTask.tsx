@@ -1,5 +1,4 @@
-import React, { Dispatch, useRef, FormEvent, useState } from "react";
-import { useFireStore } from "~/contexts/FirestoreContext";
+import React, { Dispatch, useEffect, useRef, useState } from "react";
 import { Textarea } from "~/components/ui/textarea";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
@@ -12,11 +11,16 @@ import {
   SelectItem,
   SelectPopover,
 } from "~/components/ui/select";
-import { DateValue, Key } from "react-aria-components";
+import { DateValue, Key, TextField } from "react-aria-components";
 import MyDatePicker from "~/components/MyDatePicker";
+import { useFetcher } from "@remix-run/react";
+import { ACTIVITY } from "../constants/activities";
+import { getLocalTimeZone } from "@internationalized/date";
 
 type CreateTaskProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
+  initialProgress?: Key;
+  initialDate?: DateValue;
 };
 
 export type Task = {
@@ -26,55 +30,55 @@ export type Task = {
   progress: string;
 };
 
-export default function CreateTask({ setIsOpen }: CreateTaskProps) {
-  const { addTask } = useFireStore();
-  const titleRef = useRef<HTMLInputElement>(null);
-  const descRef = useRef<HTMLTextAreaElement>(null);
-  const dateRef = useRef<HTMLInputElement>(null);
-  const [progress, setProgress] = useState<Key>("Not Started");
+export default function CreateTask({
+  setIsOpen,
+  initialProgress,
+}: CreateTaskProps) {
+  const fetcher = useFetcher();
+  const [progress, setProgress] = useState<Key>(
+    initialProgress ?? "Not Started",
+  );
   const [date, setDate] = useState<DateValue>();
-  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(progress);
-    if (titleRef.current && descRef.current && dateRef.current && addTask) {
-      try {
-        await addTask(
-          titleRef.current.value,
-          descRef.current.value,
-          dateRef.current.value,
-          progress as string,
-        );
-        setIsOpen(false);
-      } catch (err) {
-        console.error(err);
-      }
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (fetcher.state !== "loading") return;
+    if (fetcher.data?.success && fetcher.data?.activity === ACTIVITY.TASK) {
+      setIsOpen(false);
     }
-  };
+  }, [fetcher.data?.activity, fetcher.data?.success, fetcher.state, setIsOpen]);
 
   return (
-    <form onSubmit={(e) => handleFormSubmit(e)} className="space-y-6">
-      <div className="space-y-2">
-        <Label htmlFor="title">Title:</Label>
-        <Input type="text" name="title" className="input" ref={titleRef} />
-      </div>
+    <fetcher.Form
+      method="post"
+      action="/app"
+      className="space-y-6"
+      onChange={() => {
+        console.log(formRef.current?.elements);
+      }}
+      ref={formRef}
+    >
+      <TextField name="title" className="space-y-2">
+        <Label>Title:</Label>
+        <Input />
+      </TextField>
       <div className="space-y-2">
         <Label htmlFor="description">Description:</Label>
-        <Textarea
-          name="description"
-          placeholder="Description"
-          className="textarea"
-          ref={descRef}
-        />
+        <Textarea name="description" placeholder="Description" />
       </div>
       <div className="space-y-2">
         <Label htmlFor="due-date">Due Date:</Label>
         <MyDatePicker
           date={date}
           setDate={setDate}
-          name="task-due-date"
           aria-label="chose task due date"
         />
       </div>
+      <input
+        type="hidden"
+        name="due_date"
+        value={date?.toDate(getLocalTimeZone()).toISOString()}
+      />
       <div className="space-y-2">
         <Label htmlFor="progress">Progress:</Label>
         <Select
@@ -101,9 +105,15 @@ export default function CreateTask({ setIsOpen }: CreateTaskProps) {
           </SelectPopover>
         </Select>
       </div>
-      <Button type="submit" variant="default" className="w-full">
+      <Button
+        type="submit"
+        variant="default"
+        name="activity"
+        value={ACTIVITY.TASK}
+        className="w-full"
+      >
         Submit
       </Button>
-    </form>
+    </fetcher.Form>
   );
 }

@@ -1,8 +1,9 @@
-import React, { Dispatch, useRef, FormEvent } from "react";
-import { useFireStore } from "~/contexts/FirestoreContext";
+import React, { Dispatch, useEffect } from "react";
 import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
+import { useFetcher } from "@remix-run/react";
+import { ACTIVITY } from "../constants/activities";
 
 type CreateEventProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
@@ -15,48 +16,38 @@ export type Event = {
 };
 
 export default function CreateEvent({ setIsOpen }: CreateEventProps) {
-  const { addEvent } = useFireStore();
-  const titleRef = useRef<HTMLInputElement>(null);
-  const startDateRef = useRef<HTMLInputElement>(null);
-  const endDateRef = useRef<HTMLInputElement>(null);
+  const fetcher = useFetcher();
 
-  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (
-      titleRef.current &&
-      endDateRef.current &&
-      startDateRef.current &&
-      addEvent
-    ) {
-      try {
-        await addEvent(
-          titleRef.current.value,
-          startDateRef.current.value,
-          endDateRef.current.value,
-        );
-        setIsOpen(false);
-      } catch (err) {
-        console.error(err);
-      }
+  useEffect(() => {
+    if (fetcher.state !== "loading") return;
+    if (fetcher.data?.success && fetcher.data?.activity === ACTIVITY.EVENT) {
+      setIsOpen(false);
     }
-  };
+  }, [fetcher.data?.activity, fetcher.data?.success, fetcher.state, setIsOpen]);
+
   return (
-    <form onSubmit={(e) => handleFormSubmit(e)}>
+    <fetcher.Form method="post" action="/app">
       <Label htmlFor="title" className="label">
         Title:
       </Label>
-      <Input type="text" name="title" className="input" ref={titleRef} />
+      <Input type="text" name="title" className="input" />
       <Label htmlFor="start-time" className="label">
         Start
       </Label>
-      <Input type="datetime-local" name="start-time" ref={startDateRef} />
+      <Input type="datetime-local" name="start-time" />
       <Label htmlFor="end-time" className="label">
         End
       </Label>
-      <Input type="datetime-local" name="end-time" ref={endDateRef} />
-      <Button type="submit" variant="default" className="w-full">
+      <Input type="datetime-local" name="end-time" />
+      <Button
+        type="submit"
+        name="activity"
+        value={ACTIVITY.EVENT}
+        variant="default"
+        className="w-full"
+      >
         Submit
       </Button>
-    </form>
+    </fetcher.Form>
   );
 }

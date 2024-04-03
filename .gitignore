@@ -3,6 +3,7 @@ node_modules
 /.cache
 /build
 .env.local*
+.env
 
 # Sentry Config File
 .sentryclirc
