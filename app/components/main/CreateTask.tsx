@@ -27,7 +27,7 @@ export type Task = {
   id: number;
   title: string;
   description: string;
-  dueDate: string;
+  due_date: string;
   progress: string;
   subtasks?: Record<string, string>[];
 };
@@ -63,7 +63,7 @@ export default function CreateTask({
         <Label htmlFor="due-date">Due Date:</Label>
         <MyDatePicker
           date={date}
-          value={date}
+          defaultValue={date}
           setDate={setDate}
           aria-label="chose task due date"
         />
