@@ -21,12 +21,12 @@ export const loader: LoaderFunction = async (args) => {
 
 export default function HomeLayout() {
   return (
-    <div className=" mx-auto max-w-7xl">
+    <>
       <NavBar />
-      <main>
+      <main className="mx-auto max-w-7xl">
         <Outlet />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }

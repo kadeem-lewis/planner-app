@@ -24,11 +24,11 @@ export default function LandingPage() {
   return (
     <div className=" text-xl">
       <section>
-        <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
+        <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:items-center">
           <div className="mx-auto max-w-xl text-center">
             <h1 className="text-3xl font-extrabold sm:text-5xl">
               Master Your Time.
-              <strong className="font-extrabold text-red-700 sm:block">
+              <strong className="font-extrabold text-purple-700 sm:block">
                 {" "}
                 Achieve Your Dreams.{" "}
               </strong>
@@ -41,14 +41,14 @@ export default function LandingPage() {
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Link
-                className="block w-full rounded bg-red-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+                className="block w-full rounded bg-purple-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-purple-700 focus:outline-none focus:ring active:bg-purple-500 sm:w-auto"
                 href="/auth/signup"
               >
                 Get Started
               </Link>
 
               <Link
-                className="block w-full rounded px-12 py-3 text-sm font-medium text-red-600 shadow hover:text-red-700 focus:outline-none focus:ring active:text-red-500 sm:w-auto"
+                className="block w-full rounded px-12 py-3 text-sm font-medium text-purple-600 shadow hover:text-purple-700 focus:outline-none focus:ring active:text-purple-500 sm:w-auto"
                 href="#"
               >
                 Learn More
@@ -57,7 +57,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      <section className="bg-white dark:bg-gray-900">
+      <section>
         <div className="container mx-auto px-6 py-12">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {APP_FEATURES.map((feature) => (
@@ -77,22 +77,20 @@ export default function LandingPage() {
                   />
                 </svg>
 
-                <h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
+                <h1 className="mt-4 text-xl font-semibold ">
                   {feature.heading}
                 </h1>
 
-                <p className="mt-2 text-gray-500 dark:text-gray-400">
-                  {feature.content}
-                </p>
+                <p className="mt-2 text-muted-foreground">{feature.content}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <section className="bg-white dark:bg-gray-900">
+      <section>
         <div className="container mx-auto px-6 py-10">
-          <h1 className="text-center text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-3xl">
-            What our <span className="text-blue-500 ">clients</span> say
+          <h1 className="text-center text-2xl font-semibold capitalize  lg:text-3xl">
+            What our <span className="text-purple-500 ">clients</span> say
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-center text-gray-500 dark:text-gray-300">
@@ -115,9 +113,7 @@ export default function LandingPage() {
                 />
 
                 <div className="mx-2">
-                  <h1 className="font-semibold text-gray-800 dark:text-white">
-                    Robert Duncan
-                  </h1>
+                  <h1 className="font-semibold ">Robert Duncan</h1>
                   <span className="text-sm text-gray-500">Startup Founder</span>
                 </div>
               </div>
@@ -136,9 +132,7 @@ export default function LandingPage() {
                 />
 
                 <div className="mx-2">
-                  <h1 className="font-semibold text-gray-800 dark:text-white">
-                    Kareem Louis
-                  </h1>
+                  <h1 className="font-semibold ">Kareem Louis</h1>
                   <span className="text-sm text-gray-500">
                     Unorganized Person
                   </span>
@@ -147,7 +141,7 @@ export default function LandingPage() {
             </div>
 
             <div className="rounded-lg border p-8 dark:border-gray-700">
-              <p className="leading-loose text-gray-500 dark:text-gray-400">
+              <p className="leading-loose text-muted-foreground">
                 “Totally love it. Greatest app ever Invented”
               </p>
 
@@ -158,9 +152,7 @@ export default function LandingPage() {
                   alt=""
                 />
                 <div className="mx-2">
-                  <h1 className="font-semibold text-gray-800 dark:text-white">
-                    Ariela Ponti{" "}
-                  </h1>
+                  <h1 className="font-semibold ">Ariela Ponti </h1>
                   <span className="text-sm text-gray-500">College Student</span>
                 </div>
               </div>
@@ -168,16 +160,16 @@ export default function LandingPage() {
           </section>
         </div>
       </section>
-      <section className="bg-white dark:bg-gray-900">
+      <section>
         <div className="container mx-auto flex flex-col items-center px-4 py-12 text-center">
-          <h2 className="mx-auto max-w-2xl text-2xl font-semibold tracking-tight text-gray-800 dark:text-white xl:text-3xl">
-            Ready to <span className="text-blue-500">take control</span> of your
-            time?
+          <h2 className="mx-auto max-w-2xl text-2xl font-semibold tracking-tight  xl:text-3xl">
+            Ready to <span className="text-purple-500">take control</span> of
+            your time?
           </h2>
           <div className="mt-6 inline-flex w-full sm:w-auto">
             <Link
               href="/auth/signup"
-              className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-6 py-2 text-white duration-300 hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+              className="inline-flex w-full items-center justify-center rounded-lg bg-purple-600 px-6 py-2 text-white duration-300 hover:bg-purple-500 focus:ring focus:ring-purple-300 focus:ring-opacity-80"
             >
               Sign Up
             </Link>
