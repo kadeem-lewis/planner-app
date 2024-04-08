@@ -6,9 +6,6 @@ import { RemixVitePWA } from "@vite-pwa/remix";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { netlifyPlugin } from "@netlify/remix-adapter/plugin";
 
-import tailwind from "tailwindcss";
-import autoprefixer from "autoprefixer";
-
 installGlobals();
 
 const { RemixVitePWAPlugin, RemixPWAPreset } = RemixVitePWA();
@@ -26,13 +23,6 @@ export default defineConfig({
     }),
     netlifyPlugin(),
   ],
-
-  css: {
-    postcss: {
-      plugins: [tailwind(), autoprefixer()],
-    },
-  },
-
   build: {
     sourcemap: true,
   },
