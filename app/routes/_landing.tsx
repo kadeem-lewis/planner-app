@@ -1,6 +1,8 @@
 import NavBar from "~/components/home/NavBar";
 import Footer from "~/components/home/Footer";
 import { Outlet } from "@remix-run/react";
+import { LoaderFunction, redirect } from "@remix-run/node";
+import { getAuth } from "@clerk/remix/ssr.server";
 
 export const meta = () => {
   return [
@@ -9,14 +11,22 @@ export const meta = () => {
   ];
 };
 
+export const loader: LoaderFunction = async (args) => {
+  const { userId } = await getAuth(args);
+  if (userId) {
+    return redirect("/app/today");
+  }
+  return {};
+};
+
 export default function HomeLayout() {
   return (
-    <div className=" mx-auto max-w-7xl">
+    <>
       <NavBar />
-      <main>
+      <main className="mx-auto max-w-7xl">
         <Outlet />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }

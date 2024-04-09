@@ -1,4 +1,4 @@
-import React, { Dispatch, useEffect, useRef, useState } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 import { Textarea } from "~/components/ui/textarea";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
@@ -24,10 +24,12 @@ type CreateTaskProps = {
 };
 
 export type Task = {
+  id: number;
   title: string;
   description: string;
-  dueDate: string;
+  due_date: string;
   progress: string;
+  subtasks?: Record<string, string>[];
 };
 
 export default function CreateTask({
@@ -39,7 +41,6 @@ export default function CreateTask({
     initialProgress ?? "Not Started",
   );
   const [date, setDate] = useState<DateValue>();
-  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (fetcher.state !== "loading") return;
@@ -49,15 +50,7 @@ export default function CreateTask({
   }, [fetcher.data?.activity, fetcher.data?.success, fetcher.state, setIsOpen]);
 
   return (
-    <fetcher.Form
-      method="post"
-      action="/app"
-      className="space-y-6"
-      onChange={() => {
-        console.log(formRef.current?.elements);
-      }}
-      ref={formRef}
-    >
+    <fetcher.Form method="post" action="/app" className="space-y-6">
       <TextField name="title" className="space-y-2">
         <Label>Title:</Label>
         <Input />
@@ -70,6 +63,7 @@ export default function CreateTask({
         <Label htmlFor="due-date">Due Date:</Label>
         <MyDatePicker
           date={date}
+          defaultValue={date}
           setDate={setDate}
           aria-label="chose task due date"
         />

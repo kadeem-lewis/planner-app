@@ -3,7 +3,7 @@ import { Plus } from "lucide-react";
 import ActivityCard from "~/components/main/ActivityCard";
 import CreateTask, { Task } from "~/components/main/CreateTask";
 import { Input } from "~/components/ui/input";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DialogTrigger,
   DialogContent,
@@ -11,42 +11,57 @@ import {
   DialogTitle,
   DialogOverlay,
 } from "~/components/ui/dialog";
-import { GridList, GridListItem } from "~/components/ui/grid-list";
-import { useDragAndDrop } from "react-aria-components";
+import { useDragAndDrop } from "@formkit/drag-and-drop/react";
+import { useFetcher } from "@remix-run/react";
 
 type KanbanBoardProps = {
   name: string;
   activities: Task[];
-  setActivities: React.Dispatch<React.SetStateAction<Task[]>>;
-  updateBoardName: (oldName: string, newName: string) => void;
+  id: string;
 };
 
-export default function KanbanBoard({ name, activities }: KanbanBoardProps) {
+const KanbanBoard = ({ name, activities, id }: KanbanBoardProps) => {
   const [editable, setEditable] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const fetcher = useFetcher();
 
-  const { dragAndDropHooks } = useDragAndDrop({
-    getItems(keys) {},
-    getDropOperation: () => "move",
-    async onInsert(e) {},
-    async onRootDrop(e) {},
-    onDragEnd(e) {
-      if (e.dropOperation === "move") {
-        //use setActivities to remove
-      }
+  const [parent, tasksList] = useDragAndDrop<HTMLUListElement, Task>(
+    activities,
+    {
+      group: "progressBoards",
     },
-  });
+  );
+
+  const [prevTasksList, setPrevTasksList] = useState<Task[]>([]);
+
+  useEffect(() => {
+    const addedTasks = tasksList.filter(
+      (task) => !prevTasksList.includes(task),
+    );
+
+    if (addedTasks.length > 0) {
+      const task = addedTasks[0];
+      fetcher.submit(
+        {
+          taskId: task.id,
+          boardName: name,
+        },
+        { method: "POST" },
+      );
+    }
+
+    setPrevTasksList(tasksList);
+  }, [fetcher, name, prevTasksList, tasksList]);
 
   return (
     <div className="flex h-fit w-full flex-col justify-between rounded-lg bg-muted px-4 py-6">
-      <div className="text-xl font-bold" onClick={() => setEditable(true)}>
+      <div className="drag-handle text-xl font-bold">
         {!editable ? (
           name
         ) : (
           <Input
             value={name}
             onBlur={() => setEditable(false)}
-            onChange={(e) => updateBoardName(name, e.target.value)}
             onKeyDown={(e) => {
               if (e.key !== "Enter") return;
               setEditable(false);
@@ -54,20 +69,15 @@ export default function KanbanBoard({ name, activities }: KanbanBoardProps) {
           />
         )}
       </div>
-      <GridList
-        items={activities}
-        aria-label={`${name} Kanban Board`}
-        className="my-4 flex flex-col gap-3"
-        dragAndDropHooks={dragAndDropHooks}
-      >
-        {(item) => {
-          return (
-            <GridListItem textValue={item.title}>
-              <ActivityCard activity={item} />
-            </GridListItem>
-          );
-        }}
-      </GridList>
+      <ul ref={parent} id={id} className="my-6 flex flex-col gap-4">
+        {tasksList.map((activity) => (
+          <ActivityCard
+            key={activity.id}
+            activity={activity}
+            id={String(activity.id)}
+          />
+        ))}
+      </ul>
       <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
         <Button variant="default" className="flex gap-2 justify-self-end">
           <Plus />
@@ -84,4 +94,6 @@ export default function KanbanBoard({ name, activities }: KanbanBoardProps) {
       </DialogTrigger>
     </div>
   );
-}
+};
+
+export default KanbanBoard;

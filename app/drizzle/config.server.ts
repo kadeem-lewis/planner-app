@@ -5,7 +5,7 @@ import postgres from "postgres";
 const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString) {
-  throw new Error("Missing environment variable: DATABASE_PATH");
+  throw new Error("Missing environment variable: DATABASE_URL");
 }
 
 // Disable prefetch as it is not supported for "Transaction" pool mode

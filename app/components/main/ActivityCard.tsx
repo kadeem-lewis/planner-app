@@ -7,14 +7,16 @@ import {
   CardDescription,
 } from "~/components/ui/card";
 import { format } from "date-fns";
+import type { Task } from "./CreateTask";
 
 type ActivityCardProps = {
-  activity: Record<string, string>;
+  activity: Task;
+  id: string;
 };
 
-export default function ActivityCard({ activity }: ActivityCardProps) {
+export default function ActivityCard({ activity, id }: ActivityCardProps) {
   return (
-    <Card>
+    <Card id={id}>
       <CardHeader>
         <CardTitle className="text-xl">{activity.title}</CardTitle>
         {activity.description && (
@@ -22,10 +24,10 @@ export default function ActivityCard({ activity }: ActivityCardProps) {
         )}
       </CardHeader>
       <CardContent className="flex gap-4">
-        {activity.dueDate && (
+        {activity.due_date && (
           <div className="flex gap-2 text-muted-foreground">
             <CalendarClock />
-            <p>{format(activity.dueDate, "MMM d, yyyy")}</p>
+            <p>{format(activity.due_date, "MMM d, yyyy")}</p>
           </div>
         )}
         {activity.subtasks && (
