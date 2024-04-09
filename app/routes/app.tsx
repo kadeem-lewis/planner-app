@@ -3,8 +3,8 @@ import NavBar from "~/components/main/NavBar";
 import SideBar from "~/components/main/SideBar";
 import { getAuth } from "@clerk/remix/ssr.server";
 import {
-  ActionFunction,
-  LoaderFunction,
+  type ActionFunction,
+  type LoaderFunction,
   redirect,
   json,
 } from "@remix-run/node";

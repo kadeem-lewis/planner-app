@@ -1,7 +1,7 @@
 import { Button } from "~/components/ui/button";
 import { Plus } from "lucide-react";
 import ActivityCard from "~/components/main/ActivityCard";
-import CreateTask, { Task } from "~/components/main/CreateTask";
+import CreateTask, { type Task } from "~/components/main/CreateTask";
 import { Input } from "~/components/ui/input";
 import { useEffect, useState } from "react";
 import {

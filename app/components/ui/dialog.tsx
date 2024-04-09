@@ -2,16 +2,18 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";
+import type {
+  DialogProps,
+  HeadingProps,
+  ModalOverlayProps,
+} from "react-aria-components";
 import {
   Button,
   Dialog,
-  DialogProps,
   DialogTrigger,
   Heading,
-  HeadingProps,
   Modal,
   ModalOverlay,
-  ModalOverlayProps,
 } from "react-aria-components";
 
 import { cn } from "~/lib/utils";

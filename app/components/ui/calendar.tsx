@@ -3,19 +3,21 @@
 import * as React from "react";
 import { getLocalTimeZone, today } from "@internationalized/date";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import type {
+  CalendarCellProps,
+  CalendarGridBodyProps,
+  CalendarGridHeaderProps,
+  CalendarGridProps,
+  CalendarHeaderCellProps,
+} from "react-aria-components";
 import {
   Button,
   Calendar,
   CalendarCell,
-  CalendarCellProps,
   CalendarGrid,
   CalendarGridBody,
-  CalendarGridBodyProps,
   CalendarGridHeader,
-  CalendarGridHeaderProps,
-  CalendarGridProps,
   CalendarHeaderCell,
-  CalendarHeaderCellProps,
   Heading,
   RangeCalendar,
   RangeCalendarStateContext,

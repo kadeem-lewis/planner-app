@@ -1,19 +1,21 @@
 /* eslint-disable react/prop-types */
 import * as React from "react";
 import { Check, Circle } from "lucide-react";
+import type {
+  MenuItemProps,
+  MenuProps,
+  PopoverProps,
+  SeparatorProps,
+} from "react-aria-components";
 import {
   Header,
   Keyboard,
   Menu,
   MenuItem,
-  MenuItemProps,
-  MenuProps,
   MenuTrigger,
   Popover,
-  PopoverProps,
   Section,
   Separator,
-  SeparatorProps,
 } from "react-aria-components";
 
 import { cn } from "~/lib/utils";

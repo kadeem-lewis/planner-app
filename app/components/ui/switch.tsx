@@ -1,4 +1,4 @@
-import { Switch, SwitchProps } from "react-aria-components";
+import { Switch, type SwitchProps } from "react-aria-components";
 
 import { cn } from "~/lib/utils";
 

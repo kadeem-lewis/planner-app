@@ -1,8 +1,8 @@
 import {
   GridList as AriaGridList,
   GridListItem as AriaGridListItem,
-  GridListProps,
-  GridListItemProps,
+  type GridListProps,
+  type GridListItemProps,
 } from "react-aria-components";
 import { Checkbox } from "./checkbox";
 import { Button } from "./button";

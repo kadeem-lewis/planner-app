@@ -1,23 +1,25 @@
 /* eslint-disable react/prop-types */
 import * as React from "react";
 import { Check, ChevronDown } from "lucide-react";
+import type {
+  ButtonProps,
+  ListBoxItemProps,
+  ListBoxProps,
+  PopoverProps,
+  SelectValueProps,
+  SeparatorProps,
+} from "react-aria-components";
 import {
   Button,
-  ButtonProps,
   Collection,
   Header,
   ListBox,
   ListBoxItem,
-  ListBoxItemProps,
-  ListBoxProps,
   Popover,
-  PopoverProps,
   Section,
   Select,
   SelectValue,
-  SelectValueProps,
   Separator,
-  SeparatorProps,
 } from "react-aria-components";
 
 import { cn } from "~/lib/utils";

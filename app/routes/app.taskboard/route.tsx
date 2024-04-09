@@ -1,12 +1,12 @@
 import KanbanBoard from "./KanbanBoard";
-import { ActionFunction, LoaderFunction, json } from "@remix-run/node";
+import { type ActionFunction, type LoaderFunction, json } from "@remix-run/node";
 import { db } from "~/drizzle/config.server";
 import { tasks } from "~/drizzle/schema.server";
 import { eq } from "drizzle-orm";
 import { getAuth } from "@clerk/remix/ssr.server";
 import { useLoaderData } from "@remix-run/react";
 import { useDragAndDrop } from "@formkit/drag-and-drop/react";
-import { Task } from "~/components/main/CreateTask";
+import type { Task } from "~/components/main/CreateTask";
 
 export const loader: LoaderFunction = async (args) => {
   const { userId } = await getAuth(args);

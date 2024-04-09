@@ -4,7 +4,7 @@ import ActivityModal from "./ActivityModal";
 import { Button } from "~/components/ui/button";
 
 import { Menu, MenuItem, MenuPopover, MenuTrigger } from "../ui/menu";
-import { Key } from "react-aria-components";
+import type { Key } from "react-aria-components";
 
 import {
   DialogOverlay,

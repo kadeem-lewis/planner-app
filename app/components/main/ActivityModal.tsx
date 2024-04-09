@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import React, { type Dispatch } from "react";
 import CreateEvent from "./CreateEvent";
 import CreateTask from "./CreateTask";
 import { Tab, TabList, TabPanel, Tabs } from "~/components/ui/tabs";

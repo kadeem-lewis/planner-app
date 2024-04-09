@@ -1,4 +1,4 @@
-import React, { Dispatch, useEffect, useState } from "react";
+import React, { type Dispatch, useEffect, useState } from "react";
 import { Textarea } from "~/components/ui/textarea";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
@@ -11,7 +11,7 @@ import {
   SelectItem,
   SelectPopover,
 } from "~/components/ui/select";
-import { DateValue, Key, TextField } from "react-aria-components";
+import { type DateValue, type Key, TextField } from "react-aria-components";
 import MyDatePicker from "~/components/MyDatePicker";
 import { useFetcher } from "@remix-run/react";
 import { ACTIVITY } from "../constants/activities";
