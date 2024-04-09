@@ -1,5 +1,4 @@
 import { Button } from "~/components/ui/button";
-import { Plus } from "lucide-react";
 import ActivityCard from "~/components/main/ActivityCard";
 import CreateTask, { type Task } from "~/components/main/CreateTask";
 import { Input } from "~/components/ui/input";
@@ -13,6 +12,7 @@ import {
 } from "~/components/ui/dialog";
 import { useDragAndDrop } from "@formkit/drag-and-drop/react";
 import { useFetcher } from "@remix-run/react";
+import { Icon } from "~/components/Icon";
 
 type KanbanBoardProps = {
   name: string;
@@ -80,7 +80,7 @@ const KanbanBoard = ({ name, activities, id }: KanbanBoardProps) => {
       </ul>
       <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
         <Button variant="default" className="flex gap-2 justify-self-end">
-          <Plus />
+          <Icon name="lucide-plus" className="size-5" />
           Add Task
         </Button>
         <DialogOverlay>

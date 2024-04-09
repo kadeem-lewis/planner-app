@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Plus } from "lucide-react";
 import ActivityModal from "./ActivityModal";
 import { Button } from "~/components/ui/button";
 
@@ -13,6 +12,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "~/components/ui/dialog";
+import { Icon } from "../Icon";
 
 export default function ActivityButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +35,7 @@ export default function ActivityButton() {
     <>
       <MenuTrigger>
         <Button variant="ghost">
-          <Plus />
+          <Icon name="lucide-plus" className="size-5" />
         </Button>
         <MenuPopover>
           <Menu onAction={onMenuAction}>

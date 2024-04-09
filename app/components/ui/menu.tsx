@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import * as React from "react";
-import { Check, Circle } from "lucide-react";
 import type {
   MenuItemProps,
   MenuProps,
@@ -19,6 +18,7 @@ import {
 } from "react-aria-components";
 
 import { cn } from "~/lib/utils";
+import { Icon } from "../Icon";
 
 const _MenuTrigger = MenuTrigger;
 
@@ -110,7 +110,9 @@ const MenuCheckboxItem = ({ className, children, ...props }: MenuItemProps) => (
     {(values) => (
       <>
         <span className="absolute left-2 flex h-4 w-4 items-center justify-center">
-          {values.isSelected && <Check className="h-4 w-4" />}
+          {values.isSelected && (
+            <Icon name="lucide-check" className="h-4 w-4" />
+          )}
         </span>
 
         {typeof children === "function" ? children(values) : children}
@@ -132,7 +134,9 @@ const MenuRadioItem = ({ className, children, ...props }: MenuItemProps) => (
     {(values) => (
       <>
         <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-          {values.isSelected && <Circle className="h-2 w-2 fill-current" />}
+          {values.isSelected && (
+            <Icon name="lucide-circle" className="h-2 w-2 fill-current" />
+          )}
         </span>
         {typeof children === "function" ? children(values) : children}
       </>

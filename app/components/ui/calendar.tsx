@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { getLocalTimeZone, today } from "@internationalized/date";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import type {
   CalendarCellProps,
   CalendarGridBodyProps,
@@ -22,6 +21,7 @@ import {
   RangeCalendar,
   RangeCalendarStateContext,
 } from "react-aria-components";
+import { Icon } from "../Icon";
 
 import { cn } from "~/lib/utils";
 import { buttonVariants } from "~/components/ui/button";
@@ -44,7 +44,7 @@ const _CalendarHeading = ({
           "absolute right-1 text-popover-foreground",
         )}
       >
-        <ChevronRight className="h-4 w-4" />
+        <Icon name="lucide-chevron-right" className="size-4" />
       </Button>
       <Button
         slot="previous"
@@ -54,7 +54,7 @@ const _CalendarHeading = ({
           "absolute left-1 text-popover-foreground",
         )}
       >
-        <ChevronLeft className="h-4 w-4" />
+        <Icon name="lucide-chevron-left" className="size-4" />
       </Button>
     </div>
   </header>

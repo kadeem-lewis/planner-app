@@ -1,6 +1,5 @@
 import { getLocalTimeZone } from "@internationalized/date";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
 import type {
   DateRangePickerProps,
   DateValue,
@@ -18,6 +17,7 @@ import {
 import { cn } from "~/lib/utils";
 import { Button } from "~/components/ui/button";
 import { Popover } from "~/components/ui/popover";
+import { Icon } from "../Icon";
 
 const _DatePicker = DatePicker;
 
@@ -36,7 +36,7 @@ const _DatePickerButton = ({ date, ...props }: _DatePickerButtonProps) => (
         !date && "text-muted-foreground",
       )}
     >
-      <CalendarIcon className="mr-2 h-4 w-4" />
+      <Icon name="lucide-calendar" className="mr-2 size-4" />
 
       {date ? (
         format(date?.toDate(getLocalTimeZone()), "PPP")
@@ -63,7 +63,7 @@ const _DateRangePickerButton = ({
         !date && "text-muted-foreground",
       )}
     >
-      <CalendarIcon className="mr-2 h-4 w-4" />
+      <Icon name="lucide-calendar" className="mr-2 size-4" />
 
       {date?.end ? (
         <>
