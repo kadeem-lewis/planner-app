@@ -14,7 +14,7 @@ export const meta = () => {
 export const loader: LoaderFunction = async (args) => {
   const { userId } = await getAuth(args);
   if (userId) {
-    return redirect("/app/today");
+    throw redirect("/app/today");
   }
   return {};
 };
