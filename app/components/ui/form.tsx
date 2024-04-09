@@ -1,12 +1,14 @@
-import {
+import type {
   FormProps,
+  TextFieldProps as AriaTextFieldProps,
+  FieldErrorProps,
+  TextProps,
+} from "react-aria-components";
+import {
   Form as AriaForm,
   TextField as AriaTextField,
-  TextFieldProps as AriaTextFieldProps,
   FieldError as AriaFieldError,
-  FieldErrorProps,
   Text,
-  TextProps,
 } from "react-aria-components";
 
 import { cn } from "~/lib/utils";

@@ -1,4 +1,3 @@
-import { CalendarClock, LayoutList } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -8,6 +7,7 @@ import {
 } from "~/components/ui/card";
 import { format } from "date-fns";
 import type { Task } from "./CreateTask";
+import { Icon } from "../Icon";
 
 type ActivityCardProps = {
   activity: Task;
@@ -26,13 +26,13 @@ export default function ActivityCard({ activity, id }: ActivityCardProps) {
       <CardContent className="flex gap-4">
         {activity.due_date && (
           <div className="flex gap-2 text-muted-foreground">
-            <CalendarClock />
+            <Icon name="lucide-calendar-clock" className="size-5" />
             <p>{format(activity.due_date, "MMM d, yyyy")}</p>
           </div>
         )}
         {activity.subtasks && (
           <div className="flex gap-2">
-            <LayoutList />
+            <Icon name="lucide-layout-list" className="size-5" />
             <span>
               {
                 activity.subtasks.filter((task) => task.status === "completed")
