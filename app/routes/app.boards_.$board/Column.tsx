@@ -14,13 +14,13 @@ import { useDragAndDrop } from "@formkit/drag-and-drop/react";
 import { useFetcher } from "@remix-run/react";
 import { Icon } from "~/components/Icon";
 
-type KanbanBoardProps = {
+type ColumnProps = {
   name: string;
   activities: Task[];
   id: string;
 };
 
-const KanbanBoard = ({ name, activities, id }: KanbanBoardProps) => {
+export default function Column({ name, activities, id }: ColumnProps) {
   const [editable, setEditable] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const fetcher = useFetcher();
@@ -94,6 +94,4 @@ const KanbanBoard = ({ name, activities, id }: KanbanBoardProps) => {
       </DialogTrigger>
     </div>
   );
-};
-
-export default KanbanBoard;
+}
