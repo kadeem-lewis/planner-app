@@ -1,5 +1,5 @@
-import { Calendar, CalendarDays, SquareKanban, ListChecks } from "lucide-react";
 import { NavLink } from "@remix-run/react";
+import { Icon } from "../Icon";
 
 export default function SideBar() {
   return (
@@ -9,28 +9,28 @@ export default function SideBar() {
           to="/app/today"
           className="mt-5 flex items-center gap-2 rounded-lg px-4 py-2 text-muted-foreground transition-all hover:text-primary "
         >
-          <Calendar className="size-5" />
+          <Icon name="lucide-calendar" className="size-5" />
           <span className="font-medium">Today</span>
         </NavLink>
         <NavLink
           to="/app/calendar"
           className="mt-5 flex items-center gap-2 rounded-lg px-4 py-2 text-muted-foreground transition-all hover:text-primary"
         >
-          <CalendarDays className="size-5" />
+          <Icon name="lucide-calendar-days" className="size-5" />
           <span className="font-medium">Calendar</span>
         </NavLink>
         <NavLink
-          to="/app/taskboard"
+          to="/app/boards"
           className="mt-5 flex items-center gap-2 rounded-lg px-4 py-2 text-muted-foreground transition-all hover:text-primary"
         >
-          <SquareKanban className="size-5" />
-          <span className="font-medium">Taskboard</span>
+          <Icon name="lucide-square-kanban" className="size-5" />
+          <span className="font-medium">Boards</span>
         </NavLink>
         <NavLink
           to="/app/habit-tracker"
           className="mt-5 flex items-center gap-2 rounded-lg px-4 py-2 text-muted-foreground transition-all hover:text-primary"
         >
-          <ListChecks className="size-5" />
+          <Icon name="lucide-list-checks" className="size-5" />
           <span className="font-medium">Habit Tracker</span>
         </NavLink>
       </nav>

@@ -13,7 +13,7 @@ import {
   DatePickerButton,
   DatePickerContent,
 } from "~/components/ui/date-picker";
-import { DatePickerProps, DateValue } from "react-aria-components";
+import type { DatePickerProps, DateValue } from "react-aria-components";
 import { Button } from "~/components/ui/button";
 import { getLocalTimeZone, today } from "@internationalized/date";
 

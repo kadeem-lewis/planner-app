@@ -4,7 +4,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import ActivityModal from "~/components/main/ActivityModal";
-import { EventInput } from "@fullcalendar/core";
+import type { EventInput } from "@fullcalendar/core";
 import {
   DialogTrigger,
   DialogOverlay,
@@ -12,7 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "~/components/ui/dialog";
-import { LoaderFunctionArgs, json } from "@remix-run/node";
+import { type LoaderFunctionArgs, json } from "@remix-run/node";
 import { getAuth } from "@clerk/remix/ssr.server";
 import { eq } from "drizzle-orm";
 import { db } from "~/drizzle/config.server";

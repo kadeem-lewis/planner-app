@@ -1,26 +1,28 @@
 /* eslint-disable react/prop-types */
 import * as React from "react";
-import { Check, ChevronDown } from "lucide-react";
+import type {
+  ButtonProps,
+  ListBoxItemProps,
+  ListBoxProps,
+  PopoverProps,
+  SelectValueProps,
+  SeparatorProps,
+} from "react-aria-components";
 import {
   Button,
-  ButtonProps,
   Collection,
   Header,
   ListBox,
   ListBoxItem,
-  ListBoxItemProps,
-  ListBoxProps,
   Popover,
-  PopoverProps,
   Section,
   Select,
   SelectValue,
-  SelectValueProps,
   Separator,
-  SeparatorProps,
 } from "react-aria-components";
 
 import { cn } from "~/lib/utils";
+import { Icon } from "../Icon";
 
 const _Select = Select;
 
@@ -56,7 +58,11 @@ const SelectTrigger = ({ className, children, ...props }: ButtonProps) => (
     {(values) => (
       <>
         {typeof children === "function" ? children(values) : children}
-        <ChevronDown aria-hidden="true" className="h-4 w-4 opacity-50" />
+        <Icon
+          name="lucide-chevron-down"
+          aria-hidden="true"
+          className="h-4 w-4 opacity-50"
+        />
       </>
     )}
   </Button>
@@ -86,7 +92,7 @@ const SelectItem = ({ className, children, ...props }: ListBoxItemProps) => (
       <>
         {values.isSelected && (
           <span className="absolute left-2 flex h-4 w-4 items-center justify-center">
-            <Check className="h-4 w-4" />
+            <Icon name="lucide-check" className="size-4" />
           </span>
         )}
         {typeof children === "function" ? children(values) : children}

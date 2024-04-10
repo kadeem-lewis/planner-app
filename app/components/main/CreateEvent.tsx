@@ -1,8 +1,9 @@
-import React, { Dispatch, useEffect } from "react";
+import React, { type Dispatch, useEffect } from "react";
 import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import { useFetcher } from "@remix-run/react";
+import { action } from "~/routes/app";
 import { ACTIVITY } from "../constants/activities";
 
 type CreateEventProps = {
@@ -16,7 +17,7 @@ export type Event = {
 };
 
 export default function CreateEvent({ setIsOpen }: CreateEventProps) {
-  const fetcher = useFetcher();
+  const fetcher = useFetcher<typeof action>();
 
   useEffect(() => {
     if (fetcher.state !== "loading") return;

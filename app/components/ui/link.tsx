@@ -1,5 +1,9 @@
 import { type VariantProps } from "class-variance-authority";
-import { Link, LinkProps, LinkRenderProps } from "react-aria-components";
+import {
+  Link,
+  type LinkProps,
+  type LinkRenderProps,
+} from "react-aria-components";
 
 import { cn } from "~/lib/utils";
 

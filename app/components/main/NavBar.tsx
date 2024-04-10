@@ -1,11 +1,3 @@
-import {
-  Home,
-  Bell,
-  Menu as MenuIcon,
-  Calendar,
-  CalendarDays,
-  KanbanSquare,
-} from "lucide-react";
 import ActivityButton from "./ActivityButton";
 import NotificationTab from "./NotificationTab";
 import { Link, NavLink } from "@remix-run/react";
@@ -17,6 +9,7 @@ import {
   DialogContent,
 } from "~/components/ui/dialog";
 import { UserButton } from "@clerk/remix";
+import { Icon } from "../Icon";
 
 export default function NavBar() {
   return (
@@ -29,7 +22,7 @@ export default function NavBar() {
               size="icon"
               className="shrink-0 md:hidden"
             >
-              <MenuIcon />
+              <Icon name="lucide-menu" className="size-6" />
             </Button>
             <DialogOverlay>
               <DialogContent side="left" className="flex flex-col">
@@ -38,22 +31,22 @@ export default function NavBar() {
                     to="/app/today"
                     className="flex items-center gap-4 rounded-xl text-lg font-semibold text-muted-foreground hover:text-foreground"
                   >
-                    <Calendar />
+                    <Icon name="lucide-calendar" className="size-6" />
                     Today
                   </NavLink>
                   <NavLink
                     to="/app/calendar"
                     className="flex items-center gap-4 rounded-xl text-lg font-semibold text-muted-foreground hover:text-foreground"
                   >
-                    <CalendarDays />
+                    <Icon name="lucide-calendar-days" className="size-6" />
                     Calendar
                   </NavLink>
                   <NavLink
-                    to="/app/taskboard"
+                    to="/app/boards"
                     className="flex items-center gap-4 rounded-xl text-lg font-semibold text-muted-foreground hover:text-foreground"
                   >
-                    <KanbanSquare />
-                    Taskboard
+                    <Icon name="lucide-square-kanban" className="size-6" />
+                    Boards
                   </NavLink>
                 </nav>
               </DialogContent>
@@ -63,14 +56,14 @@ export default function NavBar() {
             to="/app/today"
             className={buttonVariants({ variant: "ghost" })}
           >
-            <Home />
+            <Icon name="lucide-home" className="size-6" />
           </Link>
         </div>
         <div className="flex items-center gap-x-1">
           <ActivityButton />
           <MenuTrigger>
             <Button variant="ghost">
-              <Bell />
+              <Icon name="lucide-bell" className="size-6" />
             </Button>
             <MenuPopover>
               <Menu>
