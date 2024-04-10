@@ -20,11 +20,11 @@ export default function SideBar() {
           <span className="font-medium">Calendar</span>
         </NavLink>
         <NavLink
-          to="/app/taskboard"
+          to="/app/boards"
           className="mt-5 flex items-center gap-2 rounded-lg px-4 py-2 text-muted-foreground transition-all hover:text-primary"
         >
           <Icon name="lucide-square-kanban" className="size-5" />
-          <span className="font-medium">Taskboard</span>
+          <span className="font-medium">Boards</span>
         </NavLink>
         <NavLink
           to="/app/habit-tracker"
