@@ -10,7 +10,7 @@ import {
 } from "@remix-run/node";
 import { db } from "~/drizzle/config.server";
 import { events, tasks } from "~/drizzle/schema.server";
-import { ACTIVITY } from "~/components/constants/activities";
+import { ACTIVITY } from "~/constants/activities";
 
 export const meta = () => {
   return [

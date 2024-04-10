@@ -14,7 +14,7 @@ import {
 import { type DateValue, type Key, TextField } from "react-aria-components";
 import MyDatePicker from "~/components/MyDatePicker";
 import { useFetcher } from "@remix-run/react";
-import { ACTIVITY } from "../constants/activities";
+import { ACTIVITY } from "../../constants/activities";
 import { getLocalTimeZone } from "@internationalized/date";
 import { action } from "~/routes/app";
 

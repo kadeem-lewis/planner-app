@@ -4,7 +4,7 @@ import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import { useFetcher } from "@remix-run/react";
 import { action } from "~/routes/app";
-import { ACTIVITY } from "../constants/activities";
+import { ACTIVITY } from "../../constants/activities";
 
 type CreateEventProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
