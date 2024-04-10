@@ -16,6 +16,7 @@ import MyDatePicker from "~/components/MyDatePicker";
 import { useFetcher } from "@remix-run/react";
 import { ACTIVITY } from "../constants/activities";
 import { getLocalTimeZone } from "@internationalized/date";
+import { action } from "~/routes/app";
 
 type CreateTaskProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
@@ -36,7 +37,7 @@ export default function CreateTask({
   setIsOpen,
   initialProgress,
 }: CreateTaskProps) {
-  const fetcher = useFetcher();
+  const fetcher = useFetcher<typeof action>();
   const [progress, setProgress] = useState<Key>(
     initialProgress ?? "Not Started",
   );

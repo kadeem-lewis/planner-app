@@ -42,11 +42,11 @@ export default function NavBar() {
                     Calendar
                   </NavLink>
                   <NavLink
-                    to="/app/taskboard"
+                    to="/app/boards"
                     className="flex items-center gap-4 rounded-xl text-lg font-semibold text-muted-foreground hover:text-foreground"
                   >
                     <Icon name="lucide-square-kanban" className="size-6" />
-                    Taskboard
+                    Boards
                   </NavLink>
                 </nav>
               </DialogContent>
