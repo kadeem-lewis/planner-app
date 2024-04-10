@@ -16,7 +16,7 @@ import MyDatePicker from "~/components/MyDatePicker";
 import { useFetcher } from "@remix-run/react";
 import { ACTIVITY } from "../../constants/activities";
 import { getLocalTimeZone } from "@internationalized/date";
-import { action } from "~/routes/app";
+import { action } from "~/routes/resources.activity/route";
 
 type CreateTaskProps = {
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
@@ -51,7 +51,11 @@ export default function CreateTask({
   }, [fetcher.data?.activity, fetcher.data?.success, fetcher.state, setIsOpen]);
 
   return (
-    <fetcher.Form method="post" action="/app" className="space-y-6">
+    <fetcher.Form
+      method="post"
+      action="/resources/activity"
+      className="space-y-6"
+    >
       <TextField name="title" className="space-y-2">
         <Label>Title:</Label>
         <Input />
