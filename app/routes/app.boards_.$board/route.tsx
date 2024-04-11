@@ -5,7 +5,7 @@ import {
   json,
 } from "@remix-run/node";
 import { db } from "~/drizzle/config.server";
-import { tasks } from "~/drizzle/schema.server";
+import { board, tasks } from "~/drizzle/schema.server";
 import { eq } from "drizzle-orm";
 import { getAuth } from "@clerk/remix/ssr.server";
 import { useLoaderData } from "@remix-run/react";
@@ -14,6 +14,15 @@ import type { Task } from "~/components/main/CreateTask";
 
 export const loader: LoaderFunction = async (args) => {
   const { userId } = await getAuth(args);
+
+  const boardId = Number(args.params.board);
+
+  const boardData = await db.query.board.findMany({
+    where: eq(board.id, boardId),
+    with: {
+      tasks: true,
+    },
+  });
 
   //! Not sure if using ! is recommended but userId shouldn't be able to be null since it is handled in the layout
   return json(await db.select().from(tasks).where(eq(tasks.user_id, userId!)));
