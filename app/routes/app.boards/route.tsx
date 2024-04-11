@@ -9,6 +9,7 @@ import {
   json,
   ActionFunctionArgs,
 } from "@remix-run/node";
+import { createBoard, deleteBoard } from "./queries";
 
 export async function loader(args: LoaderFunctionArgs) {
   const { userId } = await getAuth(args);
@@ -26,10 +27,8 @@ export async function action(args: ActionFunctionArgs) {
   switch (formData.get("intent")) {
     case "create":
       try {
-        await db.insert(board).values({
-          name: String(formData.get("name")),
-          user_id: String(userId),
-        });
+        const name = String(formData.get("name"));
+        await createBoard(name, userId!);
         return json({ message: "Board created" });
       } catch (error) {
         return json({ error }, { status: 500 });
@@ -37,7 +36,7 @@ export async function action(args: ActionFunctionArgs) {
     case "delete":
       try {
         const boardId = Number(formData.get("boardId"));
-        await db.delete(board).where(eq(board.id, boardId));
+        await deleteBoard(boardId);
         return json({ message: "Board deleted" });
       } catch (error) {
         return json({ error }, { status: 500 });
