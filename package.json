@@ -51,6 +51,7 @@
     "isbot": "^4.4.0",
     "pg": "^8.11.4",
     "postgres": "^3.4.4",
+    "posthog-js": "^1.121.4",
     "react": "^18.2.0",
     "react-aria-components": "^1.1.1",
     "react-dom": "^18.2.0",

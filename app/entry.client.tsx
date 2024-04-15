@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 import * as Sentry from "@sentry/remix";
 /**
  * By default, Remix will handle hydrating your app on the client for you.
@@ -8,6 +9,7 @@ import * as Sentry from "@sentry/remix";
 import { RemixBrowser, useLocation, useMatches } from "@remix-run/react";
 import { startTransition, StrictMode, useEffect } from "react";
 import { hydrateRoot } from "react-dom/client";
+import posthog from "posthog-js";
 
 Sentry.init({
   dsn: "https://cd25ba1dfe7f3f9915df0b9405b3ce2f@o4506349855244288.ingest.us.sentry.io/4507005005266944",
@@ -26,11 +28,22 @@ Sentry.init({
   enabled: process.env.NODE_ENV !== "development",
 });
 
+function PosthogInit() {
+  useEffect(() => {
+    posthog.init("phc_KqZ8YCVUtejfkJtlFfByd2BhomsgwbXsXUJ7UAVSgKU", {
+      api_host: "https://app.posthog.com",
+    });
+  }, []);
+
+  return null;
+}
+
 startTransition(() => {
   hydrateRoot(
     document,
     <StrictMode>
       <RemixBrowser />
+      <PosthogInit />
     </StrictMode>,
   );
 });
